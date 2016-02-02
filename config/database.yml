@@ -16,10 +16,14 @@ development:
   <<: *default
   encoding: unicode
   database: sherbim_development
-  username: postgres
+  host: localhost
+  username: ENV['POSTGREUSER']
+  password: ENV['POSTGREPASS']
 
 test:
   <<: *default
   encoding: unicode
   database: sherbim_test
-  username: postgre
+  host: localhost
+  username: ENV['POSTGREUSER']
+  password: ENV['POSTGREPASS']
