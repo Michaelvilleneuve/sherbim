@@ -8,22 +8,18 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: 5000
-
-development:
-  <<: *default
-
 development:
   <<: *default
   encoding: unicode
   database: sherbim_development
   host: localhost
-  username: ENV['POSTGREUSER']
-  password: ENV['POSTGREPASS']
+  username: <%= ENV['POSTGREUSER'] %>
+  password: <%= ENV['POSTGREPASS'] %>
 
 test:
   <<: *default
   encoding: unicode
   database: sherbim_test
   host: localhost
-  username: ENV['POSTGREUSER']
-  password: ENV['POSTGREPASS']
+  username: <%= ENV['POSTGREUSER'] %>
+  password: <%= ENV['POSTGREPASS'] %>
