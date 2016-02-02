@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  title: MyString
+  description: MyText
+  place: MyString
+  transport: MyString
+  statut: MyString
+  price: 1.5
+  date: 2016-02-02 18:19:59
+  code: MyString
+
+two:
+  user_id: 
+  title: MyString
+  description: MyText
+  place: MyString
+  transport: MyString
+  statut: MyString
+  price: 1.5
+  date: 2016-02-02 18:19:59
+  code: MyString
