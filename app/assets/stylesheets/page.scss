@@ -1,3 +1,91 @@
 // Place all the styles related to the page controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Colors
+$red : #ed4b48;
+
+// Easing
+$in-expo      : cubic-bezier(0.950, 0.050, 0.795, 0.035);
+$out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
+
+
+// Ask a service btn
+.btn-ask {
+	z-index: 100;
+	position: fixed;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+}
+.btn-ask_icon {
+	display: block;
+	width: 5em;
+	height: 5em;
+	color: #fff;
+	background-color: $red;
+	border: none;
+
+	opacity: 1;
+	transition: background .2s ease-in-out;
+
+	&:hover {
+		background: darken($red, 3%);
+
+		& + .btn-ask_text {
+			opacity: 1;
+			transform: translateX(0) scaleX(1);
+			transition: transform .3s $out-expo, opacity .2s ease-in;
+		}
+	}
+}
+
+.btn-ask_text {
+	z-index: 99;
+	position: absolute;
+	top: 0;
+	left: 5em;	
+	display: block;
+	width: 5em;
+	height: 5em;
+	color: #fff;
+	background-color: darken($red, 10%);
+
+	opacity: 0;
+	transform: translateX(-1em) scaleX(.5);
+	transform-origin: 0 0;
+	transition: transform .2s $in-expo, opacity .2s ease-in;
+
+	span {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		display: inline-block;
+		width: 100%;
+		padding: 0 .5em;
+		font-size: .7em;
+		text-align: center;
+		transform: translateY(-50%);
+	}
+}
+
+// Services list
+.service-container {
+	padding: 2em 0;
+	background-color: #fff;
+}
+
+.service-title {
+	margin: 0;
+	font-size: 1.4em;
+	font-weight: 700;
+	text-align: center;
+}
+
+.service-list {
+	clear: both;
+}
+
+.service-item {
+	float: left;
+}

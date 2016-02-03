@@ -1,11 +1,24 @@
-<h1>Services ihguogukgukg</h1>
-<ul>
-<% @services.each do |service| %>
-	<li><%= service.title %> : <br>
-	<%= service.description %><br>
-	Lieux : <%= service.place %><br>
-	Prix :  <%= service.price %><br>
-	<%= link_to "Voir le détail", service %>
-	</li>
-<% end %>
-</ul>
+<div class="btn-ask">
+	<button class="btn-ask_icon">+</button>
+	<span class="btn-ask_text">
+		<span>Demander un service</span>
+	</span>
+</div>
+
+<div class="service-container">
+	<div class="container">
+		<h2 class="service-title">Services proposés</h2>
+		<!-- Services list -->
+		<ul class="service-list || row">
+			<% @services.each do |service| %>
+				<li class="service-item || col-xs-12 col-s-6 col-l-4">
+					<%= service.title %> : <br>
+					<%= service.description %><br>
+					Lieu : <%= service.place %><br>
+					Prix :  <%= service.price %><br>
+					<%= link_to "Voir le détail", service %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
