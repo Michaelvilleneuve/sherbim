@@ -9,7 +9,7 @@ class ServicesController < ApplicationController
   end
 
   def participate
-    if params[:id]
+    if params[:id] && @current_user
       if @service
         if (@service[:nbpart] > @service.participants.count)
           participant_params = {}

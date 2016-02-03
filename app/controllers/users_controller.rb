@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    if @current_user[:id] == 1
+    if @current_user[:id] == 3
       @users = User.all
     else 
       redirect_to root_path
