@@ -9,12 +9,39 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
- <% if current_user %>
-    Connecté en tant que <strong><%= current_user.name %></strong>!
-    <%= link_to "Se déconnecter", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Se connecter avec facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shërbim</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to "Demander un service", new_service_path %></li>
+        <li><%= link_to "Mon compte : "+@current_user.points.to_s+" crédits", @current_user %></li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+	    <% if @current_user %>
+	    	<%= link_to @current_user.name, signout_path, id: "sign_out", title: "Se déconnecter" %>
+	  	<% else %>
+	    	<%= link_to "Se connecter avec facebook", "/auth/facebook", id: "sign_in" %>
+	  	<% end %>
+  		</li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+ 
 <%= yield %>
 
 </body>
