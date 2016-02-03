@@ -1,10 +1,11 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :update, :destroy]
 
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
+    redirect_to root_path
   end
 
   # GET /services/1
@@ -25,6 +26,11 @@ class ServicesController < ApplicationController
   # POST /services.json
   def create
     @service = Service.new(service_params)
+    if !@current_user
+      redirect_to @service, notice: 'Vous devez être connecté'
+    else
+      @service[:user_id] = @current_user.id
+    end
 
     respond_to do |format|
       if @service.save
@@ -66,7 +72,12 @@ class ServicesController < ApplicationController
     def set_service
       @service = Service.find(params[:id])
     end
-
+    # Check if the right user is modifying the entry
+    def check_user
+      if @current_user.id != @service.user_id
+        redirect_to root_path
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
       params.require(:service).permit(:user_id, :title, :description, :place, :transport, :statut, :price, :date, :code)

@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if @current_user[:id] == 1
+      @users = User.all
+    else 
+      redirect_to root_path
+    end
   end
 
   # GET /users/1
@@ -25,6 +30,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user[:points] = 100
 
     respond_to do |format|
       if @user.save
@@ -40,6 +46,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    user_info = User.find(params[:id])
+    if !user_info.points
+      @user[:points] = 100
+    end
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -66,9 +76,13 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
-
+    def check_user
+      if @current_user.id != @user.id
+        redirect_to root_path
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :firstname, :description, :email, :phone, :age, :points)
+      params.require(:user).permit(:name, :firstname, :description, :email, :phone, :age)
     end
 end
