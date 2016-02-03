@@ -70,10 +70,41 @@ function showMarkers(id) {
 	});
 }
 function initMap() {
+var style = [
+    {
+        "stylers": [
+            {
+                "hue": "#dd0d0d"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "lightness": 100
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    }
+];
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat : 46.3390728,lng :1.143419},
     zoom: 6,
- 	draggable: false,
+ 	draggable: true,
+    styles: style
   });
   showMarkers();
 
