@@ -45,11 +45,10 @@
       <p><%= service.title %></p>
       <p><%= service.description %></p>
       <ul>
-      <% service.participants.each do |user| %>
-        <li><%= user.name %></li>
+      <% service.participants.each do |participant| %>
+        <li><%= participant.user.name %></li>
       <% end %>
       </ul>
-      <%= link_to "Voir les participants", service %>
     </div>
   <% end %>
 </div>

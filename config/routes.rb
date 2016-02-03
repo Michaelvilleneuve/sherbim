@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
 
   get 'page/index'
-  get 'service/:id/participer' => 'services#participate'
+  get 'services/:id/participer' => 'services#participate'
 
   resources :services
   resources :users

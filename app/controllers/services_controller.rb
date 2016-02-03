@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: [:show, :edit, :update, :destroy,:participate]
   before_action :check_user, only: [:edit, :update, :destroy]
 
   # GET /services
@@ -9,7 +9,27 @@ class ServicesController < ApplicationController
   end
 
   def participate
-    
+    if params[:id]
+      if @service
+        if (@service[:nbpart] > @service.participants.count)
+          participant_params = {}
+          participant_params[:user_id] = @current_user.id
+          participant_params[:service_id] = params[:id]
+          @participant = Participant.new(participant_params)
+          if @participant.save
+            redirect_to @service, notice: 'Vous participez désormais à cet évènement !'
+          else
+            redirect_to @service, notice: 'Oup\'s impossible de participer'
+          end
+        else 
+          redirect_to @service, notice: "Il y a déjà #{@service[:nbpart].to_s} participants !"
+        end 
+      else 
+        redirect_to root_path
+      end
+    else 
+      redirect_to root_path
+    end
   end
 
   # GET /services/1
