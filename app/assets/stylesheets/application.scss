@@ -10,15 +10,18 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require application-import
  *= require_self
+ *
  */
 
-$font-family     : "Ma web font", "Helvetica Neue", Arial, sans-serif;
-$font-size : 16px;
-$font-color: #222;
-$selection-bg    : #00f;
-$selection-color : #fff;
+
+
+ $font-family     : "raleway-regular", "Helvetica Neue", Arial, sans-serif;
+ $font-size : 16px;
+ $font-color: #222;
+ $selection-bg    : #00f;
+ $selection-color : #fff;
 
 
 // Selection
@@ -107,3 +110,69 @@ $out-back     : cubic-bezier(0.175, 00.885, 0.320, 1.275);
 $in-out-back  : cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
 $out-back-t   : cubic-bezier(0.535, 1.650, 0.635, 1.005);
+
+
+@mixin transform($transforms) {
+	-moz-transform: $transforms;
+	-o-transform: $transforms;
+	-ms-transform: $transforms;
+	-webkit-transform: $transforms;
+	transform: $transforms;
+}
+// rotate
+@mixin rotate ($deg) {
+	@include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($scale) {
+	@include transform(scale($scale));
+} 
+// translate
+@mixin translate ($x, $y) {
+	@include transform(translate($x, $y));
+}
+// skew
+@mixin skew ($x, $y) {
+	@include transform(skew(#{$x}deg, #{$y}deg));
+}
+//transform origin
+@mixin transform-origin ($origin) {
+	moz-transform-origin: $origin;
+	-o-transform-origin: $origin;
+	-ms-transform-origin: $origin;
+	-webkit-transform-origin: $origin;
+	transform-origin: $origin;
+}
+
+
+@mixin transition($transition...) {
+	-moz-transition:    $transition;
+	-o-transition:      $transition;
+	-webkit-transition: $transition;
+	transition:         $transition;
+}
+@mixin transition-property($property...) {
+	-moz-transition-property:    $property;
+	-o-transition-property:      $property;
+	-webkit-transition-property: $property;
+	transition-property:         $property;
+}
+@mixin transition-duration($duration...) {
+	-moz-transition-property:    $duration;
+	-o-transition-property:      $duration;
+	-webkit-transition-property: $duration;
+	transition-property:         $duration;
+}
+@mixin transition-timing-function($timing...) {
+	-moz-transition-timing-function:    $timing;
+	-o-transition-timing-function:      $timing;
+	-webkit-transition-timing-function: $timing;
+	transition-timing-function:         $timing;
+}
+@mixin transition-delay($delay...) {
+	-moz-transition-delay:    $delay;
+	-o-transition-delay:      $delay;
+	-webkit-transition-delay: $delay;
+	transition-delay:         $delay;
+}
