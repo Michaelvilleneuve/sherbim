@@ -37,3 +37,19 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+
+<div class="row">
+  <% @services.each do |service| %>
+    <div class="col-xs-4">
+      <p><%= service.title %></p>
+      <p><%= service.description %></p>
+      <ul>
+      <% service.participants.each do |user| %>
+        <li><%= user.name %></li>
+      <% end %>
+      </ul>
+      <%= link_to "Voir les participants", service %>
+    </div>
+  <% end %>
+</div>

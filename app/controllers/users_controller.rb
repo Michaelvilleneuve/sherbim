@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @services = Service.where(:user_id => @user[:id]).all
   end
 
   # GET /users/new
