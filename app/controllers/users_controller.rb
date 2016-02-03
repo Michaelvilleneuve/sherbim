@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if @current_user[:id] == 1
+      @users = User.all
+    else 
+      redirect_to root_path
+    end
   end
 
   # GET /users/1
@@ -66,7 +71,11 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
-
+    def check_user
+      if @current_user.id != @user.id
+        redirect_to root_path
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :firstname, :description, :email, :phone, :age, :points)

@@ -4,6 +4,8 @@
 	<li><%= service.title %> : <br>
 	<%= service.description %><br>
 	Lieux : <%= service.place %><br>
-	Prix :  <%= service.price %></li>
+	Prix :  <%= service.price %><br>
+	<%= link_to "Voir le détail", service %>
+	</li>
 <% end %>
 </ul>
