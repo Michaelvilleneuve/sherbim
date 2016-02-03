@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'page/index'
   get 'services/:id/participer' => 'services#participate'
+  get 'services/:id/terminate' => 'services#terminate'
 
   resources :services
   resources :users
