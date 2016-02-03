@@ -8,6 +8,10 @@ class ServicesController < ApplicationController
     redirect_to root_path
   end
 
+  def participate
+    
+  end
+
   # GET /services/1
   # GET /services/1.json
   def show
