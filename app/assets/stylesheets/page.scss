@@ -10,6 +10,11 @@ $in-expo      : cubic-bezier(0.950, 0.050, 0.795, 0.035);
 $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 
 
+.service-container {
+	padding: 2em 0;
+	background-color: #dddddd;
+}
+
 // Ask a service btn
 .btn-ask {
 	z-index: 100;
@@ -30,7 +35,7 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 	transition: background .2s ease-in-out;
 
 	&:hover {
-		background: darken($red, 3%);
+		background: darken($red, 12.5%);
 
 		& + .btn-ask_text {
 			opacity: 1;
@@ -49,7 +54,7 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 	width: 5em;
 	height: 5em;
 	color: #fff;
-	background-color: darken($red, 10%);
+	background-color: darken($red, 5%);
 
 	opacity: 0;
 	transform: translateX(-1em) scaleX(.5);
@@ -70,22 +75,116 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }
 
 // Services list
-.service-container {
-	padding: 2em 0;
-	background-color: #fff;
-}
 
 .service-title {
-	margin: 0;
+	margin: 0 0 1em;
 	font-size: 1.4em;
 	font-weight: 700;
 	text-align: center;
 }
 
 .service-list {
-	clear: both;
+	clear: both;	
 }
 
 .service-item {
 	float: left;
+	width: 33.333%;
+	margin-bottom: 2em;
+
+	&:nth-child(3n+1) {
+		clear: left;
+	}
+
+	@media (max-width: 980px) {
+		width: 50%;
+
+		&:nth-child(3n+1) {
+			clear: none;
+		}
+
+		&:nth-child(2n+1) {
+			clear: left;
+		}
+	}
+
+	@media (max-width: 769px) {
+		width: 100%;
+		clear: none;
+	}
+}
+
+.service-item_content {
+	padding: 1.5em 2em;
+	background-color: #fff;
+}
+
+.service-item_title {
+	display: block;
+	margin: 0;
+	font-size: 1.4em;
+	font-weight: 700;
+	text-align: center;
+}
+
+.service-points {
+	font-size: 2em;
+}
+
+.service-link {
+	z-index: 1;
+	display: block;
+	max-width: 15em;
+	margin: 1em auto 0;
+	padding: 1em;
+	font-size: 1em;
+	font-weight: 700;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	background-color: $red;
+
+	transition: background .2s ease-in-out;
+
+	&:before {
+		content:"";
+		z-index: -1;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		max-height: .2em;
+		background-color: darken($red, 12.5%);
+		transition: max-height .2s ease-out;
+	}
+
+	&:hover {
+		background-color: $red;
+		text-decoration: none;
+
+		&:before {
+			max-height: 100%;
+			transition: max-height .2s ease-out;
+		}
+	}
+}
+
+// Category list
+.category-list {
+	margin-top: 1em;
+	text-align: center;	
+	color: #cecccc;
+
+	li {
+		display: inline-block;
+		padding: .2em .5em;
+		border: 1px solid #cecccc;
+		border-radius: 1em;
+	}
+}
+
+// Details list
+.detail-list {
 }
