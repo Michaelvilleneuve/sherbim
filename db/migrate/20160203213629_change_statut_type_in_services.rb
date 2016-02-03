@@ -1,9 +1,5 @@
 class ChangeStatutTypeInServices < ActiveRecord::Migration
-  def up
-    change_column :services, :statut, :string
-  end
-
-  def down
+  def change
     change_column :services, :statut, :boolean
   end
 end

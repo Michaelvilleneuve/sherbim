@@ -1,10 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @service.user %>
-</p>
-
+<% if @service.statut %>
+  Ce service a déjà été rendu
+<% else %>
+  Ce service est toujours demandé par <%= @service.user.name %>
+<% end %>
+<br>
 <p>
   <strong>Title:</strong>
   <%= @service.title %>
@@ -40,6 +39,13 @@
 </p>
 
 
-<%= link_to 'Edit', edit_service_path(@service) %> |
+<% unless @service.statut %>
+<%= link_to 'Edit', edit_service_path(@service) %> 
+|
 <%= link_to 'Back', services_path %> | <%= link_to 'Participer à l\'évènement', '/services/'+@service.id.to_s+'/participer' %>
- | <%= link_to 'Service rendu !', '/services/'+@service.id.to_s+'/terminate' %>
+  <% if defined? session[:user_id] %>
+    <% if session[:user_id] == @service[:user_id] %>
+  | <%= link_to 'Service rendu !', '/services/'+@service.id.to_s+'/terminate' %>
+    <% end %>
+  <% end %>
+<% end %>

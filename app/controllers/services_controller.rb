@@ -11,22 +11,26 @@ class ServicesController < ApplicationController
   def participate
     if params[:id] && @current_user
       if @service
+        pass = true
+        @service.participants.each do |participant|
+          if participant.user_id == @current_user.id
+            pass = false
+          end
+        end
+        if (@service[:user_id] == @current_user.id)
+          unauth
+        elsif(!pass)
+          unauth
+        end
         if (@service[:nbpart] > @service.participants.count)
           participant_params = {}
           participant_params[:user_id] = @current_user.id
           participant_params[:service_id] = params[:id]
           @participant = Participant.new(participant_params)
           if @participant.save
-
             Transaction.prepareTransfert(@service[:user_id], @current_user.id, @service[:amount], @service[:id])
-
-
             redirect_to @service, notice: 'Vous participez désormais à cet évènement !'
-          else
-            redirect_to @service, notice: 'Oup\'s impossible de participer'
           end
-        else 
-          redirect_to @service, notice: "Il y a déjà #{@service[:nbpart].to_s} participants !"
         end 
       else 
         redirect_to root_path
@@ -38,7 +42,7 @@ class ServicesController < ApplicationController
 
   def terminate
     if params[:id]
-      if @service[:statut] == "f"
+      unless @service[:statut]
         @service[:statut] = true
         @service.save
         Transaction.execute(@service[:id])
@@ -114,6 +118,9 @@ class ServicesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def unauth
+      redirect_to @service, notice: 'Vous ne pouvez pas répondre à cette demande'
+    end
     def set_service
       @service = Service.find(params[:id])
     end

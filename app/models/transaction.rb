@@ -8,8 +8,8 @@ class Transaction < ActiveRecord::Base
   	transaction_params[:amount] = amount
   	transaction_params[:service_id] = service
   	transaction_params[:status] = false
-  	@transaction = Transaction.new
-  	@transaction.save(transaction_params)
+  	@transaction = Transaction.new(transaction_params)
+  	@transaction.save
   end
   def self.execute(id)
   	@transactions = Transaction.where(:service_id => id).all
