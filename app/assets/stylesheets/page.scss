@@ -114,6 +114,17 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 	}
 }
 
+.service-fig {
+	display: block;
+	width: 100%;
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}
+
 .service-item_content {
 	padding: 1.5em 2em;
 	background-color: #fff;
@@ -124,11 +135,14 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 	margin: 0;
 	font-size: 1.4em;
 	font-weight: 700;
-	text-align: center;
+	text-align: left;
 }
 
 .service-points {
-	font-size: 2em;
+	float: right;
+	display: block;	
+	color: #fff;
+	background-color: blue;
 }
 
 .service-link {
@@ -141,7 +155,6 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 	font-weight: 700;
 	color: #fff;
 	text-align: center;
-	text-decoration: none;
 	background-color: $red;
 
 	transition: background .2s ease-in-out;
@@ -157,7 +170,7 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 		height: 100%;
 		max-height: .2em;
 		background-color: darken($red, 12.5%);
-		transition: max-height .2s ease-out;
+		transition: max-height .2s ease-in;
 	}
 
 	&:hover {
@@ -173,8 +186,8 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 
 // Category list
 .category-list {
-	margin-top: 1em;
-	text-align: center;	
+	margin: .5em 0 1em;
+	text-align: left;	
 	color: #cecccc;
 
 	li {
