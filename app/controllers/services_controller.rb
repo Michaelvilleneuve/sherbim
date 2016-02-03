@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy,:participate]
-  before_action :check_user, only: [:edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :update, :destroy, :terminate]
 
   # GET /services
   # GET /services.json
@@ -17,6 +17,10 @@ class ServicesController < ApplicationController
           participant_params[:service_id] = params[:id]
           @participant = Participant.new(participant_params)
           if @participant.save
+
+            Transaction.prepareTransfert(@service[:user_id], @current_user.id, @service[:amount])
+
+
             redirect_to @service, notice: 'Vous participez désormais à cet évènement !'
           else
             redirect_to @service, notice: 'Oup\'s impossible de participer'
@@ -28,6 +32,17 @@ class ServicesController < ApplicationController
         redirect_to root_path
       end
     else 
+      redirect_to root_path
+    end
+  end
+
+  def terminate
+    if params[:id]
+      @service = Service.find params[:id]
+      @service[:status] = true
+      @service.save
+      Transaction.execute(@service[:id])
+    else
       redirect_to root_path
     end
   end
