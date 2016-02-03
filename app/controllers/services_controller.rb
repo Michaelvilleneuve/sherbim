@@ -26,6 +26,11 @@ class ServicesController < ApplicationController
   # POST /services.json
   def create
     @service = Service.new(service_params)
+    if !@current_user
+      redirect_to @service, notice: 'Vous devez être connecté'
+    else
+      @service[:user_id] = @current_user.id
+    end
 
     respond_to do |format|
       if @service.save
