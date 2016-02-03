@@ -41,16 +41,23 @@ $( document ).ready(function() {
 	}
 	button.click(function() {
 		var target = $(this).attr('data-link');
-		$('.popup-content').load( target+'.js',  openPopup);
+		if(!popup.hasClass('_active')){
+			$('.popup-content').load( target+'.js',  openPopup);
+		}else{
+			closePopup();
+		}
 	});
 	popupClose.click(function() {
 		closePopup();
 	});
-	$(document).mouseup(function (e){
-		var popupContent = $( ".popup-content" )
-		if (!popupContent.is(e.target) && popupContent.has(e.target).length === 0) {
-			closePopup();
+	if(!popup.hasClass('_active')){
+		$(document).mouseup(function (e){
+			var popupContent = $( ".popup-content" )
+			if (!popupContent.is(e.target) && popupContent.has(e.target).length === 0
+				&& !popupClose.is(e.target) && popupClose.has(e.target).length === 0) {
+				closePopup();
 		}
 	});
+	}
 });
 

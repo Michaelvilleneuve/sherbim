@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203134012) do
+ActiveRecord::Schema.define(version: 20160203165252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20160203134012) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "nbpart"
+    t.string   "longitude"
+    t.string   "latitude"
   end
 
   add_index "services", ["user_id"], name: "index_services_on_user_id", using: :btree
@@ -68,6 +70,7 @@ ActiveRecord::Schema.define(version: 20160203134012) do
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
+    t.string   "image"
   end
 
   add_foreign_key "comments", "users"

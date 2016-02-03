@@ -10,32 +10,99 @@ $in-expo      : cubic-bezier(0.950, 0.050, 0.795, 0.035);
 $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 
 
+.home-heading {
+	display: block;
+	height: 80%;
+	background-image: image-url("background.jpg");
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+.heading-title {
+	margin: 0;
+	text-align: center;	
+}
+
+.service-container {
+	background-color: #eee;
+
+	.container {
+		padding-top: 1em;
+		top: -4em;
+		background-color: #eee;
+	}
+}
+
 // Ask a service btn
 .btn-ask {
 	z-index: 100;
 	position: fixed;
 	top: 50%;
 	left: 0;
+	background-color: $red;
 	transform: translateY(-50%);
+
+	&:hover {		
+		background: darken($red, 12.5%);
+
+		.btn-ask_icon {
+
+			&:before {
+				transform: translate(-50%,-50%) rotate(-180deg) scale(1.2);
+				transition: transform .3s ease-in-out;
+			}
+
+			&:after {
+				transform: translate(-50%,-50%) rotate(-360deg) scale(1.2);
+				transition: transform .3s ease-in-out;
+			}
+		}
+	
+		.btn-ask_text {
+			opacity: 1;
+			transform: translateX(0) scaleX(1);
+			transition: transform .3s $out-expo, opacity .2s ease-in;
+		}
+	}
 }
+
 .btn-ask_icon {
 	display: block;
 	width: 5em;
 	height: 5em;
+	line-height: 5em;
 	color: #fff;
-	background-color: $red;
-	border: none;
 
 	opacity: 1;
 	transition: background .2s ease-in-out;
 
-	&:hover {
-		background: darken($red, 3%);
+	&:before,
+	&:after {
+		content:"";
+		position: absolute;
+		top: 50%;
+		left: 50%;;
+		width: 1em;
+		height: .15em;
+		background-color: #fff;
+		transform: translate(-50%,-50%);
+		transition: transform .2s ease-in-out;
+	}
 
-		& + .btn-ask_text {
-			opacity: 1;
-			transform: translateX(0) scaleX(1);
-			transition: transform .3s $out-expo, opacity .2s ease-in;
+	&:after {
+		transform: translate(-50%,-50%) rotate(-90deg);
+	}
+
+	.is-active & {
+
+		&:before {
+			transform: translate(-50%,-50%) rotate(-135deg) scale(1.2);
+			transition: transform .3s ease-in-out;
+		}
+
+		&:after {
+			transform: translate(-50%,-50%) rotate(-225deg) scale(1.2);
+			transition: transform .3s ease-in-out;
 		}
 	}
 }
@@ -49,7 +116,7 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 	width: 5em;
 	height: 5em;
 	color: #fff;
-	background-color: darken($red, 10%);
+	background-color: darken($red, 5%);
 
 	opacity: 0;
 	transform: translateX(-1em) scaleX(.5);
@@ -70,22 +137,144 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }
 
 // Services list
-.service-container {
-	padding: 2em 0;
-	background-color: #fff;
-}
-
 .service-title {
-	margin: 0;
+	margin: 0 0 1em;
 	font-size: 1.4em;
 	font-weight: 700;
 	text-align: center;
 }
 
 .service-list {
-	clear: both;
+	clear: both;	
 }
 
 .service-item {
 	float: left;
+	width: 33.333%;
+	margin-bottom: 2em;
+
+	&:nth-child(3n+1) {
+		clear: left;
+	}
+
+	@media (max-width: 980px) {
+		width: 50%;
+
+		&:nth-child(3n+1) {
+			clear: none;
+		}
+
+		&:nth-child(2n+1) {
+			clear: left;
+		}
+	}
+
+	@media (max-width: 769px) {
+		width: 100%;
+		clear: none;
+	}
+}
+
+.service-fig {
+	display: block;
+	width: 100%;
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}
+
+.service-item_content {
+	padding: 1.5em 2em;
+	background-color: #fff;
+}
+
+.service-item_title {
+	display: block;
+	margin: 0;
+	font-size: 1.4em;
+	font-weight: 700;
+	text-align: left;
+}
+
+.service-points {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;	
+	padding: 1em;
+	font-weight: 700;
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase;
+	background-color: darken($red, 20%);
+	transform: translateY(-100%);
+
+	.number {
+		display: block;
+		font-size: 2em;		
+	}
+}
+
+.service-link {
+	z-index: 1;
+	display: block;
+	max-width: 15em;
+	margin: 1em auto 0;
+	padding: 1em;
+	font-size: 1em;
+	font-weight: 700;
+	color: #fff;
+	text-align: center;
+	background-color: $red;
+
+	transition: background .2s ease-in-out;
+
+	&:before {
+		content:"";
+		z-index: -1;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		max-height: .2em;
+		background-color: darken($red, 12.5%);
+		transition: max-height .2s ease-in;
+	}
+
+	&:hover {
+		background-color: $red;
+		text-decoration: none;
+
+		&:before {
+			max-height: 100%;
+			transition: max-height .2s ease-out;
+		}
+	}
+
+	&:visited {
+		color: #fff;
+	}
+}
+
+// Category list
+.category-list {
+	margin: .5em 0 1em;
+	text-align: left;	
+	color: #cecccc;
+
+	li {
+		display: inline-block;
+		padding: .2em .5em;
+		border: 1px solid #cecccc;
+		border-radius: 1em;
+	}
+}
+
+// Details list
+.detail-list {
 }

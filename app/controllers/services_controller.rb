@@ -5,7 +5,7 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    redirect_to root_path
+    @services = Service.all
   end
 
   def participate
@@ -105,6 +105,6 @@ class ServicesController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:user_id, :title, :description, :place, :transport, :statut, :price, :date, :code, :nbpart)
+      params.require(:service).permit(:user_id, :title, :description, :place, :transport, :statut, :price, :date, :code, :nbpart, :longitude, :latitude)
     end
 end
