@@ -51,6 +51,9 @@ class UsersController < ApplicationController
     if !user_info.points
       @user[:points] = 100
     end
+    if !user_info.image
+      @user[:image] = 'http://graph.facebook.com/'+user_info.uid.to_s+'/picture?width=360&height=210'
+    end
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -84,6 +87,6 @@ class UsersController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :firstname, :description, :email, :phone, :age)
+      params.require(:user).permit(:name, :firstname, :description, :email, :phone, :age, :image)
     end
 end
