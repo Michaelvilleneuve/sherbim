@@ -30,6 +30,7 @@ class ServicesController < ApplicationController
       redirect_to @service, notice: 'Vous devez être connecté'
     else
       @service[:user_id] = @current_user.id
+      @service[:code] = time.usec.to_s+@current_user.id.to_s
     end
 
     respond_to do |format|
@@ -80,6 +81,6 @@ class ServicesController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:user_id, :title, :description, :place, :transport, :statut, :price, :date, :code)
+      params.require(:service).permit(:user_id, :title, :description, :place, :transport, :statut, :price, :date, :code, :nbpart)
     end
 end
