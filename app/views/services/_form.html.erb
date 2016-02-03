@@ -11,35 +11,24 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :placeholder => "Nom du service" %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description , :placeholder => "Description"%>
   </div>
   <div class="field">
-    <%= f.label :place %><br>
-    <%= f.text_field :place %>
+    <%= f.text_field :place , :placeholder => "Lieu"%>
   </div>
   <div class="field">
-    <%= f.label :transport %><br>
-    <%= f.text_field :transport %>
+    <%= f.text_field :transport, :placeholder => "Transport" %>
   </div>
   <div class="field">
-    <%= f.label :nbpart %><br>
-    <%= f.number_field :nbpart %>
+    <%= f.number_field :nbpart, :placeholder => "Nombre de participants souhaités" %>
   </div>
   <div class="field">
-    <%= f.label :statut %><br>
-    <%= f.text_field :statut %>
+    <%= f.text_field :price, :placeholder => "Prix" %>
   </div>
   <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br>
     <%= f.datetime_select :date %>
   </div>
   <div class="actions">

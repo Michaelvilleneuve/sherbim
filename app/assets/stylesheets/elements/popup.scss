@@ -1,0 +1,79 @@
+.popup{
+	position: fixed;
+	background:rgba(0,0,0,0.8);
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	visibility: hidden;
+	z-index:40;
+	opacity:0;
+	@include transition(all 0.7s ease);
+	&-content{
+		@include translate(-200%, 0);
+		position: absolute;
+		display:inline-block;
+		text-align:center;
+		width:50%;
+		height:70%;
+		top:0;
+		bottom:0;
+		left:0;
+		right:0;
+		margin: auto;
+		background:white;
+		overflow-y:scroll;
+		padding: 20px;
+		@include transition(all 0.7s ease);
+
+	}
+	&-close{
+		cursor:pointer;
+		position: absolute;
+		width: 30px;
+		height:30px;
+		top: 5%;
+		left:0;
+		right:0;
+		margin: auto;
+		&:before{
+			content: '╳';
+			color: white;
+			font-size: 25px;
+			font-weight: 100;
+		}
+	}
+	&._active{
+		opacity:1;
+		visibility: visible;
+		& .popup-content{
+			@include translate(0, 0);
+		}
+	}
+}
+
+::-webkit-input-placeholder { 
+	color: rgba(0,0,0,0.6);
+	font-size:12px;
+	font-family: $raleway-r;
+}
+::-moz-placeholder { 
+	color: rgba(0,0,0,0.6);
+	font-size:12px;
+	font-family: $raleway-r;
+ } /* firefox 19+ */
+ :-ms-input-placeholder { 
+ 	color: rgba(0,0,0,0.6);
+ 	font-size:12px;
+ 	font-family: $raleway-r;
+
+ } /* ie */
+ input:-moz-placeholder { 
+ 	color: rgba(0,0,0,0.6);
+ 	font-size:12px;
+ 	font-family: $raleway-r;
+
+ }
+
+
+
