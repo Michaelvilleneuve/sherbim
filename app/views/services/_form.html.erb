@@ -27,6 +27,10 @@
     <%= f.text_field :transport %>
   </div>
   <div class="field">
+    <%= f.label :nbpart %><br>
+    <%= f.text_field :nbpart %>
+  </div>
+  <div class="field">
     <%= f.label :statut %><br>
     <%= f.text_field :statut %>
   </div>
@@ -37,10 +41,6 @@
   <div class="field">
     <%= f.label :date %><br>
     <%= f.datetime_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
   </div>
   <div class="actions">
     <%= f.submit %>
