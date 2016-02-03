@@ -10,9 +10,27 @@ $in-expo      : cubic-bezier(0.950, 0.050, 0.795, 0.035);
 $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 
 
+.home-heading {
+	display: block;
+	height: 100%;
+	background-image: image-url("background.jpg");
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+.heading-title {
+	margin: 0;
+	text-align: center;	
+}
+
 .service-container {
-	padding: 2em 0;
-	background-color: #dddddd;
+	background-color: #eee;
+
+	.container {
+		padding-top: 1em;
+		top: -4em;
+		background-color: #eee;
+	}
 }
 
 // Ask a service btn
@@ -21,26 +39,70 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 	position: fixed;
 	top: 50%;
 	left: 0;
+	background-color: $red;
 	transform: translateY(-50%);
+
+	&:hover {		
+		background: darken($red, 12.5%);
+
+		.btn-ask_icon {
+
+			&:before {
+				transform: translate(-50%,-50%) rotate(-180deg) scale(1.2);
+				transition: transform .3s ease-in-out;
+			}
+
+			&:after {
+				transform: translate(-50%,-50%) rotate(-360deg) scale(1.2);
+				transition: transform .3s ease-in-out;
+			}
+		}
+	
+		.btn-ask_text {
+			opacity: 1;
+			transform: translateX(0) scaleX(1);
+			transition: transform .3s $out-expo, opacity .2s ease-in;
+		}
+	}
 }
+
 .btn-ask_icon {
 	display: block;
 	width: 5em;
 	height: 5em;
+	line-height: 5em;
 	color: #fff;
-	background-color: $red;
-	border: none;
 
 	opacity: 1;
 	transition: background .2s ease-in-out;
 
-	&:hover {
-		background: darken($red, 12.5%);
+	&:before,
+	&:after {
+		content:"";
+		position: absolute;
+		top: 50%;
+		left: 50%;;
+		width: 1em;
+		height: .15em;
+		background-color: #fff;
+		transform: translate(-50%,-50%);
+		transition: transform .2s ease-in-out;
+	}
 
-		& + .btn-ask_text {
-			opacity: 1;
-			transform: translateX(0) scaleX(1);
-			transition: transform .3s $out-expo, opacity .2s ease-in;
+	&:after {
+		transform: translate(-50%,-50%) rotate(-90deg);
+	}
+
+	.is-active & {
+
+		&:before {
+			transform: translate(-50%,-50%) rotate(-135deg) scale(1.2);
+			transition: transform .3s ease-in-out;
+		}
+
+		&:after {
+			transform: translate(-50%,-50%) rotate(-225deg) scale(1.2);
+			transition: transform .3s ease-in-out;
 		}
 	}
 }
@@ -75,7 +137,6 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }
 
 // Services list
-
 .service-title {
 	margin: 0 0 1em;
 	font-size: 1.4em;
@@ -139,10 +200,22 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }
 
 .service-points {
-	float: right;
+	position: absolute;
+	top: 0;
+	right: 0;
 	display: block;	
+	padding: 1em;
+	font-weight: 700;
 	color: #fff;
-	background-color: blue;
+	text-align: center;
+	text-transform: uppercase;
+	background-color: darken($red, 20%);
+	transform: translateY(-100%);
+
+	.number {
+		display: block;
+		font-size: 2em;		
+	}
 }
 
 .service-link {
@@ -181,6 +254,10 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 			max-height: 100%;
 			transition: max-height .2s ease-out;
 		}
+	}
+
+	&:visited {
+		color: #fff;
 	}
 }
 
