@@ -7,7 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+ <% if current_user %>
+    Connecté en tant que <strong><%= current_user.name %></strong>!
+    <%= link_to "Se déconnecter", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "Se connecter avec ", "/auth/facebook", id: "sign_in" %>
+  <% end %>
 <%= yield %>
 
 </body>
