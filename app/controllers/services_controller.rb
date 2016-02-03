@@ -1,11 +1,35 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: [:show, :edit, :update, :destroy,:participate]
   before_action :check_user, only: [:edit, :update, :destroy]
 
   # GET /services
   # GET /services.json
   def index
     redirect_to root_path
+  end
+
+  def participate
+    if params[:id]
+      if @service
+        if (@service[:nbpart] > @service.participants.count)
+          participant_params = {}
+          participant_params[:user_id] = @current_user.id
+          participant_params[:service_id] = params[:id]
+          @participant = Participant.new(participant_params)
+          if @participant.save
+            redirect_to @service, notice: 'Vous participez désormais à cet évènement !'
+          else
+            redirect_to @service, notice: 'Oup\'s impossible de participer'
+          end
+        else 
+          redirect_to @service, notice: "Il y a déjà #{@service[:nbpart].to_s} participants !"
+        end 
+      else 
+        redirect_to root_path
+      end
+    else 
+      redirect_to root_path
+    end
   end
 
   # GET /services/1
@@ -30,6 +54,7 @@ class ServicesController < ApplicationController
       redirect_to @service, notice: 'Vous devez être connecté'
     else
       @service[:user_id] = @current_user.id
+      @service[:code] = Time.now.to_formatted_s+@current_user.id.to_s
     end
 
     respond_to do |format|
@@ -80,6 +105,6 @@ class ServicesController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:user_id, :title, :description, :place, :transport, :statut, :price, :date, :code)
+      params.require(:service).permit(:user_id, :title, :description, :place, :transport, :statut, :price, :date, :code, :nbpart)
     end
 end
