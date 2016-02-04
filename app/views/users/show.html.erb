@@ -45,7 +45,7 @@
       <p><%= service.title %></p>
       <p><%= service.description %></p>
       <ul>
-      <% service.participants.each do |participant| %>
+      <% service.users.each do |participant| %>
         <li><%= participant.user.name %></li>
       <% end %>
       </ul>
