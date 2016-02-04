@@ -51,5 +51,5 @@ $( document ).ready(function() {
 });
 
 $(document).on('page:load', function(){
-	//initMap();
+	initMap();
 });
