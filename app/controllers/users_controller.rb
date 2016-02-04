@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # Make someone admin
   def makeadmin
     User.makeadmin(@current_user[:id])
+    redirect_to @current_user, notice: 'Tu es maintenant admin.'
   end
   # GET /users
   # GET /users.json
