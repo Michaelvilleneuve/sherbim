@@ -24,11 +24,6 @@
 </p>
 
 <p>
-  <strong>Transport:</strong>
-  <%= @service.transport %>
-</p>
-
-<p>
   <strong>Price:</strong>
   <%= @service.price %>
 </p>
@@ -38,9 +33,8 @@
   <%= @service.date %>
 </p>
 
-
 <% unless @service.statut or @current_user.nil? %>
-  <% if @service.belongs_to?(current_user) %>
+  <% if @service.belongs_to?(@current_user) %>
     <%= link_to 'Modifier', edit_service_path(@service) %> 
   | <%= button_to 'Terminer ce service', terminate_service_path(@service) %>
   <% else %>

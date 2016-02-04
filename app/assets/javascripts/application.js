@@ -28,6 +28,7 @@ $document.ready(function() {
 	$button.on('click', function() {
 		$button.toggleClass('_active');
 		$popup.toggleClass('_active');
+
 	});
 
 	// Burger menu
@@ -49,7 +50,6 @@ $document.ready(function() {
 			$mainNav.removeClass('is-hidden');
 		}
 	});
-
 });
 
 // Load map
