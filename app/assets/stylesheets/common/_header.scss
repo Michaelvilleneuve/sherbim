@@ -1,0 +1,148 @@
+.main-header {
+	z-index: 200;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+	background-color: #fff;
+}
+
+// Logo
+.header-logo {
+	display: inline-block;
+}
+
+// Burger icon
+.burger-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 2em;
+	height: 2em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity .3s ease-in-out;
+
+	&.is-active {
+
+		span {
+		
+			&:first-child {
+				transform: scaleX(0) !important;				
+			}
+			
+			&:nth-child(2) {
+				transform: scaleX(1) !important;				
+			}
+			
+			&:last-child {
+				transform: scaleX(0) !important;				
+			}
+		}
+	}
+
+	&.is-shown {
+		pointer-events: initial;
+		opacity: 1;
+	}
+
+	&:hover {
+
+		span {
+		
+			&:first-child {
+				transform: scaleX(.8);
+			}
+			
+			&:nth-child(2) {
+				transform: scaleX(.5);
+			}
+			
+			&:last-child {
+				transform: scaleX(.2);
+			}
+		}
+	}
+
+	span {
+		position: absolute;
+		left: .25em;
+		width: 1.5em;
+		height: 2px;
+		background-color: $black;
+		transform-origin: 0 0;
+		transition: transform .2s ease-out;
+
+		&:first-child {
+			top: .5em;
+		}
+
+		&:nth-child(2) {
+			top: calc(50% - 1px);
+		}
+
+		&:last-child {
+			bottom: .5em;
+		}
+	}
+}
+
+// Navigation
+.main-nav {
+	position: absolute;
+	top: 0;
+	right: 2em;
+	display: inline-block;	
+}
+
+.main-nav_list {
+
+	li {
+		display: inline-block;
+		margin-right: 1em;
+		font-size: .7em;
+		transition: opacity .2s ease-in-out;
+
+		.is-hidden & {
+			opacity: 0;
+		}
+
+		.is-visible & {
+			opacity: 1;
+		}
+
+		a {
+			transition: color .2s ease-in-out;
+
+			&:hover {
+				color: $orange;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+// Points
+.user-points {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 2em;
+	height: 2em;
+	line-height: 2em;
+	font-size: 1em;
+	color: #fff;
+	background-color: rgba($fushia, .5);
+
+	.is-hidden & {
+		opacity: 1;
+	}
+
+	span {
+		font-size: .7em;
+	}
+}
