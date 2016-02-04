@@ -12,7 +12,7 @@ class Transaction < ActiveRecord::Base
   	@transaction.save
   end
   def self.execute(id)
-  	@transactions = Transaction.where(:service_id => id).all
+  	@transactions = Transaction.where(service_id: id).all
   	@transactions.each do |transaction|
   		if !transaction[:status]
 	  		# On débite le débiteur 
