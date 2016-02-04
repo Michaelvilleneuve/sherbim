@@ -15,16 +15,6 @@
 //= require turbolinks
 //= require_tree .
 
-// Pop up envoyer une demande de service
-// $(document).on('click','a',function(event){
-// 	event.preventDefault();
-// 	link = $(this).attr('href');
-// 	$("#wait").fadeIn(900,function(){;
-// 		$("#content").hide();
-// 		Turbolinks.visit(link);
-// 	});
-// })
-
 $( document ).ready(function() {
 
 	var popup = $( ".popup" );
@@ -61,3 +51,6 @@ $( document ).ready(function() {
 	}
 });
 
+$(document).on('page:load', function(){
+	initMap();
+});

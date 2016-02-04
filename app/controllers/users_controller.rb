@@ -2,10 +2,15 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :check_user, only: [:show, :edit, :update, :destroy]
 
+  # Make someone admin
+  def makeadmin
+    User.makeadmin(@current_user[:id])
+    redirect_to @current_user, notice: 'Tu es maintenant admin.'
+  end
   # GET /users
   # GET /users.json
   def index
-    if @current_user[:id] == 3
+    if @current_user[:role] == 'admin'
       @users = User.all
     else 
       redirect_to root_path
@@ -82,7 +87,9 @@ class UsersController < ApplicationController
     end
     def check_user
       if @current_user.id != @user.id
-        redirect_to root_path
+        unless @current_user[:role] == 'admin'
+          redirect_to root_path
+        end
       end
     end
     # Never trust parameters from the scary internet, only allow the white list through.

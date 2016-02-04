@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :comments
   get 'sessions/create'
 
@@ -6,6 +7,9 @@ Rails.application.routes.draw do
 
   get 'page/index'
   get 'services/:id/participer' => 'services#participate'
+  get 'services/:id/terminate' => 'services#terminate'
+  # Make someone admin (provisoire)
+  get 'users/:id/beadmin' => 'users#makeadmin'
 
   resources :services
   resources :users

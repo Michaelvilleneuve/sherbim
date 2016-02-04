@@ -8,9 +8,16 @@ class User < ActiveRecord::Base
       user.image = 'http://graph.facebook.com/'+auth.uid.to_s+'/picture?width=360&height=210'
       user.age = auth.info.age
       user.points = 100
+      user.role = 'customer'
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
+  end
+
+  def self.makeadmin(id)
+  	@user = User.find id
+  	@user[:role] = 'admin'
+  	@user.save
   end
 end
