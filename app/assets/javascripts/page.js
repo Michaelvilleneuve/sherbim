@@ -81,3 +81,4 @@ var style = [{"featureType":"landscape","stylers":[{"saturation":-100},{"lightne
 
 }
 google.maps.event.addDomListener(window, "load", initMap);
+initMap();
