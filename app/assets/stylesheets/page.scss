@@ -44,12 +44,14 @@
 }
 
 .heading-input_container {
+	display: block;
 }
 
 .heading-input {
 	width: 20em;
 	padding: 1em;
 	border: .15em solid transparent;
+	border-radius: 2em;
 	transition: border-color .2s ease-in-out;
 
 	&:focus {
@@ -318,6 +320,7 @@
 	text-align: center;
 	background-color: $orange;
 	border-radius: 2em;
+	overflow: hidden;
 
 	transition: background .2s ease-in-out;
 
