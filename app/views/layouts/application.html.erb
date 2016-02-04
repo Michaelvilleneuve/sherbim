@@ -6,35 +6,52 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js' %>
     <%= javascript_include_tag 'application' %>
-
     <%= csrf_meta_tags %>
   </head>
   <body>
     <header class="main-header">
       <a class="header-logo" title="Sherbim" href="/">Shërbim</a>
-      <button class="burger-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
       <nav class="main-nav">
+        <button class="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <ul class="main-nav_list">
-          <li><a href="/" title="">A propos</a></li>
           <% if @current_user %>
-            <li><%= link_to @current_user.name, signout_path, id: "sign_out", title: "Se déconnecter" %></li>
+            <li><%= link_to "Mon profile", @current_user, title: "Mon profil" %></li>
+            <li><a href="/" title="A propos">A propos</a></li>
+            <li><%= link_to "Se deconnecter", signout_path, id: "sign_out", title: "Se déconnecter" %></li>
           <% else %>
+            <li><a href="/" title="A propos">A propos</a></li>
             <li><%= link_to "Se connecter", "/auth/facebook", id: "sign_in" %></li>
           <% end %>
         </ul>
       </nav>
       <% if @current_user %>
-        <span class="user-points"><%= @current_user.points.to_s %></span>
+        <span class="user-points"><%= @current_user.points.to_i %></span>
       <% end %>
     </header>
+
+    <button class="btn-ask" data-link="services/new">
+      <span class="btn-ask_icon"></span>
+      <span class="btn-ask_text">
+        <span class="ask">Demander un service</span>
+        <span class="cancel">Annuler</span>
+      </span>
+    </button>
+
+    <div class="popup popup-ask">
+      <div class="popup-content"></div>
+    </div>
 
     <main role="main" id="#main">
       <%= yield %>
     </main>
+
+    <footer class="main-footer">
+      Hello John !
+    </footer>
 
   </body>
 </html>

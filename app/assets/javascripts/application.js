@@ -35,19 +35,17 @@ $document.ready(function() {
 	var $burger = $('.burger-menu'),
 			$mainNav = $('.main-nav');
 
-	$burger.on('click', function() {
-		$burger.toggleClass('is-active');
-		$mainNav.toggleClass('is-visible');
-	});
+	// $burger.on('click', function() {
+	// 	$burger.toggleClass('is-active');
+	// 	$mainNav.toggleClass('is-visible');
+	// });
 
 	$window.on('scroll', function() {
 		
 		if ($window.scrollTop() > 40) {
-			$burger.addClass('is-shown').removeClass('is-active');	
-			$mainNav.addClass('is-hidden').removeClass('is-visible');
+			$mainNav.addClass('scroll');
 		} else {
-			$burger.removeClass('is-shown');
-			$mainNav.removeClass('is-hidden');
+			$mainNav.removeClass('scroll');
 		}
 	});
 });
