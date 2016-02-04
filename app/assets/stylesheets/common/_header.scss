@@ -17,9 +17,7 @@
 
 // Burger icon
 .burger-menu {
-	position: fixed;
-	top: 0;
-	left: 0;
+	float: left;
 	display: block;
 	width: 2em;
 	height: 2em;
@@ -27,27 +25,9 @@
 	pointer-events: none;
 	transition: opacity .3s ease-in-out;
 
-	&.is-active {
-
-		span {
-		
-			&:first-child {
-				transform: scaleX(0) !important;				
-			}
-			
-			&:nth-child(2) {
-				transform: scaleX(1) !important;				
-			}
-			
-			&:last-child {
-				transform: scaleX(0) !important;				
-			}
-		}
-	}
-
-	&.is-shown {
-		pointer-events: initial;
+	.scroll & {
 		opacity: 1;
+		pointer-events: initial;
 	}
 
 	&:hover {
@@ -66,6 +46,10 @@
 				transform: scaleX(.2);
 			}
 		}
+
+		& + .main-nav_list {
+			opacity: 1;
+		}
 	}
 
 	span {
@@ -78,7 +62,7 @@
 		transition: transform .2s ease-out;
 
 		&:first-child {
-			top: .5em;
+			top: .6em;
 		}
 
 		&:nth-child(2) {
@@ -86,7 +70,7 @@
 		}
 
 		&:last-child {
-			bottom: .5em;
+			bottom: .6em;
 		}
 	}
 }
@@ -95,25 +79,27 @@
 .main-nav {
 	position: absolute;
 	top: 0;
-	right: 2em;
+	left: 0;
 	display: inline-block;	
 }
 
 .main-nav_list {
+	float: left;
+	transition: opacity .2s ease-in-out;
+
+	.scroll & {
+		opacity: 0;
+
+		&:hover {
+			opacity: 1;
+		}	
+	}
 
 	li {
 		display: inline-block;
-		margin-right: 1em;
+		margin-left: 1em;
 		font-size: .7em;
 		transition: opacity .2s ease-in-out;
-
-		.is-hidden & {
-			opacity: 0;
-		}
-
-		.is-visible & {
-			opacity: 1;
-		}
 
 		a {
 			transition: color .2s ease-in-out;

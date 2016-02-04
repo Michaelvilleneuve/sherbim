@@ -3,7 +3,7 @@
 
 .home-heading {
 	display: block;
-	height: 100%;
+	height: 70%;
 }
 
 .heading-map {
@@ -37,7 +37,7 @@
 .heading-title {
 	max-width: 18em;
 	margin: 0 0 .5em;
-	font-size: 2em;
+	font-size: 1.6em;
 	font-weight: 700;
 	color: #fff;
 	text-align: left;	
@@ -49,7 +49,7 @@
 
 .heading-input {
 	width: 20em;
-	padding: 1em;
+	padding: .5em;
 	border: .15em solid transparent;
 	border-radius: 2em;
 	transition: border-color .2s ease-in-out;
@@ -106,100 +106,6 @@
 			opacity: 1;
 			transform: translateX(0) scaleX(1);
 			transition: transform .3s $out-expo, opacity .2s ease-in;
-		}
-	}
-}
-
-.btn-ask_icon {
-	display: block;
-	width: 2em;
-	height: 5em;
-	color: #fff;
-
-	opacity: 1;
-	transition: background .2s ease-in-out;
-
-	&:before,
-	&:after {
-		content:"";
-		position: absolute;
-		top: 50%;
-		left: 50%;;
-		width: .75em;
-		height: .15em;
-		background-color: #fff;
-		transform: translate(-50%,-50%);
-		transition: transform .2s ease-in-out;
-	}
-
-	&:after {
-		transform: translate(-50%,-50%) rotate(-90deg);
-	}
-
-	._active & {
-
-		&:before {
-			transform: translate(-50%,-50%) rotate(-135deg) scale(1.2);
-			transition: transform .3s ease-in-out;
-		}
-
-		&:after {
-			transform: translate(-50%,-50%) rotate(-225deg) scale(1.2);
-			transition: transform .3s ease-in-out;
-		}
-	}
-}
-
-.btn-ask_text {
-	z-index: 99;
-	position: absolute;
-	top: 0;
-	left: 2em;	
-	display: block;
-	width: 5em;
-	height: 5em;
-	color: #fff;
-	background-color: darken($orange, 5%);
-
-	opacity: 0;
-	transform: translateX(-1em) scaleX(.25);
-	transform-origin: 0 0;
-	transition: transform .2s $in-expo, opacity .2s ease-in;
-
-	span {
-		position: absolute;
-		top: 50%;
-		left: 0;
-		display: inline-block;
-		width: 100%;
-		padding: 0 .5em;
-		font-size: .8em;
-		text-align: center;
-		transform: translateY(-50%);
-	}
-
-	.ask {
-		opacity: 1;
-		transition: opacity .3s ease-in-out .6s;
-	}
-
-	.cancel {
-		opacity: 0;
-		transition: opacity .2s ease-in-out .2s;
-	}
-
-	._active & {
-		background-color: darken($orange, 8%);
-		transition: background .3s ease-in;
-		
-		.ask {
-			opacity: 0;
-			transition: opacity .2s ease-in-out;
-		}
-
-		.cancel {
-			opacity: 1;
-			transition: opacity .3s ease-in-out .3s;
 		}
 	}
 }
@@ -306,7 +212,7 @@
 	text-align: left;
 }
 
-.service-points {
+.service-item_points {
 	position: absolute;
 	top: 0;
 	right: 0;
