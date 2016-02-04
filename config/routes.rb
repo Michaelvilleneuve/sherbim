@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
   resources :categories
   resources :comments
-  get 'sessions/create'
-
-  get 'sessions/destroy'
 
   get 'page/index'
-  get 'services/:id/participer' => 'services#participate'
-  get 'services/:id/terminate' => 'services#terminate'
+  post 'services/:id/participer' => 'services#participate', as: 'participate_to_service'
+  post 'services/:id/terminate' => 'services#terminate', as: 'terminate_service'
   # Make someone admin (provisoire)
-  get 'users/:id/beadmin' => 'users#makeadmin'
+  # get 'users/:id/beadmin' => 'users#makeadmin'
 
   resources :services
   resources :users

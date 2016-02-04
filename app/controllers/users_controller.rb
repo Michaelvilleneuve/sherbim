@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id               :integer          not null, primary key
+#  name             :string
+#  firstname        :string
+#  description      :text
+#  email            :string
+#  phone            :string
+#  age              :integer
+#  points           :float
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  provider         :string
+#  uid              :string
+#  oauth_token      :string
+#  oauth_expires_at :datetime
+#  image            :string
+#  role             :string
+#
+
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :check_user, only: [:show, :edit, :update, :destroy]
@@ -57,7 +79,7 @@ class UsersController < ApplicationController
       @user[:points] = 100
     end
     if !user_info.image
-      @user[:image] = 'http://graph.facebook.com/'+user_info.uid.to_s+'/picture?width=360&height=210'
+      @user[:image] = 'https://graph.facebook.com/'+user_info.uid.to_s+'/picture?width=360&height=210'
     end
     respond_to do |format|
       if @user.update(user_params)

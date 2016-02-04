@@ -39,18 +39,12 @@
 </p>
 
 
-<% unless @service.statut %>
-  <% if defined? session[:user_id] %>
-      <% if session[:user_id] == @service[:user_id] %>
-        <%= link_to 'Modifier', edit_service_path(@service) %> 
-      <% else %>
-        <%= link_to 'Toutes les demandes', root_path %> | <%= link_to 'Participer à l\'évènement', '/services/'+@service.id.to_s+'/participer' %>
-      <% end %>
-  <% end %>
-
-  <% if defined? session[:user_id] %>
-    <% if session[:user_id] == @service[:user_id] %>
-  | <%= link_to 'Service terminé', '/services/'+@service.id.to_s+'/terminate' %>
-    <% end %>
+<% unless @service.statut or @current_user.nil? %>
+  <% if @service.belongs_to?(current_user) %>
+    <%= link_to 'Modifier', edit_service_path(@service) %> 
+  | <%= button_to 'Terminer ce service', terminate_service_path(@service) %>
+  <% else %>
+    <%= link_to 'Toutes les demandes', root_path %> | 
+    <%= button_to 'Participer à l\'évènement', participate_to_service_path(@service) %>
   <% end %>
 <% end %>
