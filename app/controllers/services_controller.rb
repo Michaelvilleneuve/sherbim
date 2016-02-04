@@ -127,7 +127,9 @@ class ServicesController < ApplicationController
     # Check if the right user is modifying the entry
     def check_user
       if @current_user.id != @service.user_id
-        redirect_to root_path
+        unless @current_user[:role] == 'admin'
+          redirect_to root_path
+        end
       end
     end
     # Never trust parameters from the scary internet, only allow the white list through.
