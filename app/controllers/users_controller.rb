@@ -57,7 +57,7 @@ class UsersController < ApplicationController
       @user[:points] = 100
     end
     if !user_info.image
-      @user[:image] = 'http://graph.facebook.com/'+user_info.uid.to_s+'/picture?width=360&height=210'
+      @user[:image] = 'https://graph.facebook.com/'+user_info.uid.to_s+'/picture?width=360&height=210'
     end
     respond_to do |format|
       if @user.update(user_params)

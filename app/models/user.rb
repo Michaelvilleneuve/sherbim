@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.name
-      user.image = 'http://graph.facebook.com/'+auth.uid.to_s+'/picture?width=360&height=210'
+      user.image = 'https://graph.facebook.com/'+auth.uid.to_s+'/picture?width=360&height=210'
       user.age = auth.info.age
       user.points = 100
       user.role = 'customer'
