@@ -9,18 +9,6 @@
 	</div>
 </div>
 
-<button class="btn-ask" data-link="services/new">
-	<span class="btn-ask_icon"></span>
-	<span class="btn-ask_text">
-		<span class="ask">Demander un service</span>
-		<span class="cancel">Annuler</span>
-	</span>
-</button>
-
-<div class="popup popup-ask">
-	<div class="popup-content"></div>
-</div>
-
 <div class="service-container">
 	<div class="container">
 
@@ -42,7 +30,7 @@
 						
 						<div class="service-item_content">
 							<h3 class="service-item_title"><%= service.title %></h3>
-							<span class="service-points"><%= service.price %> pts</span>
+							<span class="service-item_points"><%= service.price.to_i %> pts</span>
 							<ul class="category-list">
 								<li class="category-item"><%= service.category.title unless service.category.nil? %></li>
 							</ul>

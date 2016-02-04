@@ -1,44 +1,43 @@
-<% if @service.statut %>
-  Ce service a déjà été rendu
-<% else %>
-  Ce service est toujours demandé par <%= @service.user.name %>
-<% end %>
-<br>
-<p>
-  <strong>Title:</strong>
-  <%= @service.title %>
-</p>
+<div class="service-container">
+  <div class="service-banner">
+    <h2 class="service-title"><%= @service.title %></h2>
+    <!-- Nb de points -->
+    <span class="service-points">
+      <span><%= @service.price.to_i %> Points</span>
+    </span>
+    <!-- Liste des caractéristiques -->
+    <ul class="service-details">
+      <li><%= @service.place %></li>
+      <li><%= @service.date.strftime('%e/%m/%Y') %></li>
+      <li><%= @service.nbpart %></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="service-content">
 
-<p>
-  <strong>Description:</strong>
-  <%= @service.description %>
-</p>
 
-<p>
-  <strong>Place:</strong>
-  <%= @service.place %>
-</p>
-<p>
-  <strong>Nombre de personnes:</strong>
-  <%= @service.nbpart %>
-</p>
+    <p class="service-state">  
+      <% if @service.statut %>
+        Ce service a déjà été rendu
+      <% else %>
+        Ce service est toujours demandé par <%= link_to @service.user.name, @service.user, title: "Voir le profil" %>
+      <% end %>
+    </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @service.price %>
-</p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @service.date %>
-</p>
 
-<% unless @service.statut or @current_user.nil? %>
-  <% if @service.belongs_to?(@current_user) %>
-    <%= link_to 'Modifier', edit_service_path(@service) %> 
-  | <%= button_to 'Terminer ce service', terminate_service_path(@service) %>
-  <% else %>
-    <%= link_to 'Toutes les demandes', root_path %> | 
-    <%= button_to 'Participer à l\'évènement', participate_to_service_path(@service) %>
+  <!-- Description du service -->
+  <p class="service-description"><%= @service.description %></p>
+
+  <!-- Liens d'autres annonces -->
+  <% unless @service.statut or @current_user.nil? %>
+    <% if @service.belongs_to?(@current_user) %>
+      <%= link_to 'Modifier', edit_service_path(@service) %> 
+    | <%= button_to 'Terminer ce service', terminate_service_path(@service) %>
+    <% else %>
+      <%= link_to 'Toutes les demandes', root_path %> | 
+      <%= button_to 'Participer à l\'évènement', participate_to_service_path(@service) %>
+    <% end %>
   <% end %>
-<% end %>
+  </div>
+</div>
