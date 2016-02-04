@@ -1,58 +1,44 @@
+# == Schema Information
+#
+# Table name: services
+#
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  title       :string
+#  description :text
+#  place       :string
+#  transport   :string
+#  statut      :boolean
+#  price       :float
+#  date        :datetime
+#  code        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  nbpart      :integer
+#  longitude   :string
+#  latitude    :string
+#  category_id :integer
+#
+
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy,:participate, :terminate]
-  before_action :check_user, only: [:edit, :update, :destroy, :terminate]
+  before_action :check_user, only: [:edit, :update, :destroy, :participate, :terminate]
 
   # GET /services
   # GET /services.json
   def index
-    @services = Service.where(:statut => false).all
+    @services = Service.where(statut: false).all
   end
 
   def participate
-    if params[:id] && @current_user
-      if @service
-        pass = true
-        @service.participants.each do |participant|
-          if participant.user_id == @current_user.id
-            pass = false
-          end
-        end
-        if (@service[:user_id] == @current_user.id)
-          unauth
-        elsif(!pass)
-          unauth
-        end
-        if (@service[:nbpart] > @service.participants.count)
-          participant_params = {}
-          participant_params[:user_id] = @current_user.id
-          participant_params[:service_id] = params[:id]
-          @participant = Participant.new(participant_params)
-          if @participant.save
-            Transaction.prepareTransfert(@service[:user_id], @current_user.id, @service[:amount], @service[:id])
-            redirect_to @service, notice: 'Vous participez désormais à cet évènement !'
-          end
-        end 
-      else 
-        redirect_to root_path
-      end
-    else 
-      redirect_to root_path
-    end
+    @service.users << @current_user
+    Transaction.create worker: @current_user, service: @service
+    redirect_to root_path
   end
 
   def terminate
-    if params[:id]
-      unless @service[:statut]
-        @service[:statut] = true
-        @service.save
-        Transaction.execute(@service[:id])
-        redirect_to @service, notice: "Parfait, vos sauveteurs ont été récompensés !"
-      else
-        redirect_to root_path
-      end
-    else
-      redirect_to root_path
-    end
+    @service.terminate
+    redirect_to root_path
   end
 
   # GET /services/1

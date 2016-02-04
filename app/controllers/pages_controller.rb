@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def index
-  	@services = Service.where(:statut => false).all
+  	@services = Service.all
   end
 end

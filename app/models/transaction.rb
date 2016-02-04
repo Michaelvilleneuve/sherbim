@@ -1,37 +1,24 @@
+# == Schema Information
+#
+# Table name: transactions
+#
+#  id         :integer          not null, primary key
+#  service_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  done       :boolean          default(FALSE)
+#  worker_id  :integer
+#
+
 class Transaction < ActiveRecord::Base
   belongs_to :service
+  belongs_to :worker, class_name: 'User'
 
-  def self.prepareTransfert(from, to, amount, service)
-  	transaction_params = {}
-  	transaction_params[:debit] = from
-  	transaction_params[:receive] = to
-  	transaction_params[:amount] = amount
-  	transaction_params[:service_id] = service
-  	transaction_params[:status] = false
-  	@transaction = Transaction.new(transaction_params)
-  	@transaction.save
-  end
-  def self.execute(id)
-  	@transactions = Transaction.where(service_id: id).all
-  	@transactions.each do |transaction|
-  		if !transaction[:status]
-	  		# On débite le débiteur 
-	  		@debiteur = transaction[:debit]
-	  		@debiteur = User.find @debiteur
-	  		@debiteur[:amount] = @debiteur[:amount] - transaction[:amount]
-	  		@debiteur.save
-
-	  		# On crédite le créditeur 
-	  		@crediteur = transaction[:receive]
-	  		@crediteur = User.find @crediteur
-	  		@crediteur[:amount] = @crediteur[:amount] + transaction[:amount]
-	  		@crediteur.save
-
-	  		# On valide la transaction
-	  		transaction[:status] = true
-	  		Transaction.save(transaction)
-	  	end
-  	end
-
+  def execute
+    # Pay everyone
+    service.user.debit amount
+    worker.credit amount
+    done = true
+    save
   end
 end
