@@ -1,36 +1,74 @@
-// Place all the styles related to the page controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-// Colors
-$red : #ed4b48;
-
-// Easing
-$in-expo      : cubic-bezier(0.950, 0.050, 0.795, 0.035);
-$out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
-
+/////////////////////////////////////////////
+// Homepage
 
 .home-heading {
 	display: block;
-	height: 80%;
-	background-image: image-url("background.jpg");
-	-webkit-background-size: cover;
-	background-size: cover;
+	height: 100%;
+}
+
+.heading-map {
+	width: 100%;
+	height: 100%;	
+
+	&:after {
+		content:"";		
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: $orange;
+		background: linear-gradient(to bottom, $orange, #fd3f59);
+		opacity: .3;
+	}
+}
+
+.heading-content {
+	z-index: 20;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	max-width: 1180px;
+	transform: translate(-50%, -50%);
 }
 
 .heading-title {
-	margin: 0;
-	text-align: center;	
+	max-width: 25em;
+	margin: 0 0 .5em;
+	font-size: 2em;
+	font-weight: 700;
+	color: #fff;
+	text-align: left;	
+}
+
+.heading-input_container {
+}
+
+.heading-input {
+	width: 20em;
+	padding: 1em;
+	border: .15em solid transparent;
+	transition: border-color .2s ease-in-out;
+
+	&:focus {
+		border-color: $orange;
+	}
+}
+
+.heading-label {
+	position: absolute;
+	top: 50%;
+	left: 1.5em;
+	font-size: .8em;
+	font-weight: 400;
+	color: #bbb;
+	transform: translateY(-50%);
 }
 
 .service-container {
 	background-color: #eee;
-
-	.container {
-		padding-top: 1em;
-		top: -4em;
-		background-color: #eee;
-	}
 }
 
 // Ask a service btn
@@ -39,11 +77,15 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 	position: fixed;
 	top: 50%;
 	left: 0;
-	background-color: $red;
+	background-color: $orange;
 	transform: translateY(-50%);
 
-	&:hover {		
-		background: darken($red, 12.5%);
+	&._active {
+		background: darken($orange, 12.5%);			
+	}
+
+	&:hover {
+		background: darken($orange, 12.5%);
 
 		.btn-ask_icon {
 
@@ -93,7 +135,7 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 		transform: translate(-50%,-50%) rotate(-90deg);
 	}
 
-	.is-active & {
+	._active & {
 
 		&:before {
 			transform: translate(-50%,-50%) rotate(-135deg) scale(1.2);
@@ -116,7 +158,7 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 	width: 5em;
 	height: 5em;
 	color: #fff;
-	background-color: darken($red, 5%);
+	background-color: darken($orange, 5%);
 
 	opacity: 0;
 	transform: translateX(-1em) scaleX(.25);
@@ -130,9 +172,53 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 		display: inline-block;
 		width: 100%;
 		padding: 0 .5em;
-		font-size: .7em;
+		font-size: .8em;
 		text-align: center;
 		transform: translateY(-50%);
+	}
+
+	.ask {
+		opacity: 1;
+		transition: opacity .3s ease-in-out .6s;
+	}
+
+	.cancel {
+		opacity: 0;
+		transition: opacity .2s ease-in-out .2s;
+	}
+
+	._active & {
+		background-color: darken($orange, 8%);
+		transition: background .3s ease-in;
+		
+		.ask {
+			opacity: 0;
+			transition: opacity .2s ease-in-out;
+		}
+
+		.cancel {
+			opacity: 1;
+			transition: opacity .3s ease-in-out .3s;
+		}
+	}
+}
+
+// Filters
+.filters {	
+	height: 4em;
+	margin-top: -4em;
+	line-height: 4em;
+	background-color: #FFF;
+}
+
+.category-list {
+	margin-bottom: 0;
+	line-height: inherit;
+	font-size: 1em;
+
+	li {
+		display: inline-block;
+		font-size: .8em;
 	}
 }
 
@@ -145,7 +231,9 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }
 
 .service-list {
-	clear: both;	
+	padding-top: 4em;
+	clear: both;
+	overflow: hidden;	
 }
 
 .service-item {
@@ -209,7 +297,7 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 	color: #fff;
 	text-align: center;
 	text-transform: uppercase;
-	background-color: darken($red, 20%);
+	background-color: darken($orange, 15%);
 	transform: translateY(-100%);
 
 	.number {
@@ -228,7 +316,7 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 	font-weight: 700;
 	color: #fff;
 	text-align: center;
-	background-color: $red;
+	background-color: $orange;
 
 	transition: background .2s ease-in-out;
 
@@ -242,12 +330,12 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 		width: 100%;
 		height: 100%;
 		max-height: .2em;
-		background-color: darken($red, 12.5%);
+		background-color: darken($orange, 12.5%);
 		transition: max-height .2s ease-in;
 	}
 
 	&:hover {
-		background-color: $red;
+		background-color: $orange;
 		text-decoration: none;
 
 		&:before {
@@ -262,7 +350,7 @@ $out-expo     : cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }
 
 // Category list
-.category-list {
+.service-categories {
 	margin: .5em 0 1em;
 	text-align: left;	
 	color: #cecccc;

@@ -1,0 +1,83 @@
+/////////////////////////////////////////////
+// Global
+
+// Selection
+::-moz-selection {
+	text-shadow: none;
+	color: $selection-color;
+	background: $selection-bg;
+}
+
+::selection {
+	text-shadow: none;
+	color: $selection-color;
+	background: $selection-bg;
+}
+
+
+*,
+*:after,
+*:before {
+	position: relative;
+	box-sizing: border-box;
+	outline: none;
+}
+
+html {
+	height: 100%;
+	font-size: $font-size;
+
+	// Media queries
+	@media (min-width: 980px) {
+		font-size: $font-size + 1;
+	}
+
+	@media (min-width: 1200px) {
+		font-size: $font-size + 2;
+	}
+
+	@media (min-width: 1440px) {
+		font-size: $font-size + 3;
+	}
+
+	@media (min-width: 1920px) {
+		font-size: $font-size + 4;
+	}
+}
+
+body {
+	height: 100%;
+	font-family: $font-family;
+	font-size: 1em;
+	color: $font-color;
+}
+
+main {
+	height: 100%;
+}
+
+
+// Reset basic styles
+button {
+	padding: 0;
+	background: none;
+	border: none;
+}
+
+input {
+	border: none;
+}
+
+ul {
+	padding-left: 0;
+	list-style: none;
+}
+
+a {
+	color: initial;
+	text-decoration: none;
+
+	&:hover {
+		background: inherit;
+	}
+}

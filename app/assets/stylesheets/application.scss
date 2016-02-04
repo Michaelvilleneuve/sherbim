@@ -10,72 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require application-import
  *= require_self
+ *
  */
-
-$font-family     : "Ma web font", "Helvetica Neue", Arial, sans-serif;
-$font-size : 16px;
-$font-color: #222;
-$selection-bg    : #000;
-$selection-color : #fff;
-
-
-// Selection
-::-moz-selection {
-	text-shadow: none;
-	color: $selection-color;
-	background: $selection-bg;
-}
-
-::selection {
-	text-shadow: none;
-	color: $selection-color;
-	background: $selection-bg;
-}
-
-// Réglages globaux
-*,
-*:after,
-*:before {
-	position: relative;
-	box-sizing: border-box;
-	outline: none;
-}
-
-html {
-	height: 100%;
-	font-size: $font-size;
-
-	// Media queries
-	@media (min-width: 980px) {
-		font-size: $font-size + 1;
-	}
-
-	@media (min-width: 1200px) {
-		font-size: $font-size + 2;
-	}
-
-	@media (min-width: 1440px) {
-		font-size: $font-size + 3;
-	}
-
-	@media (min-width: 1920px) {
-		font-size: $font-size + 4;
-	}
-}
-
-body {
-	height: 100%;
-	font-family: $font-family;
-	font-size: 1em;
-	color: $font-color;
-}
-
-main {
-	height: 100%;
-}
-
 .navbar {
 	z-index: 10;
 	position: absolute;
@@ -84,27 +22,6 @@ main {
 	width: 100%;
 }
 
-// Reset basic styles
-button {
-	padding: 0;
-	background: none;
-	border: none;
-}
-
-ul {
-	padding-left: 0;
-	list-style: none;
-}
-
-a {
-	color: initial;
-	text-decoration: none;
-
-	&:hover {
-		background: inherit;
-	}
-
-	&:visited {
-		color: initial;
-	}
+.alert-info {
+	position: absolute;
 }

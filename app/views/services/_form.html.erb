@@ -11,20 +11,32 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :placeholder => "Nom du service" %>
   </div>
   <div class="field">
+    <%= f.text_area :description , :placeholder => "Description"%>
     <label>Catégorie :</label><br>
     <%= collection_select(:service, :category_id, Category.all, :id, :title, :prompt => 'Veuillez sélectionner une catégorie') %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_field :place , :placeholder => "Lieu"%>
   </div>
   <div class="field">
-    <%= f.label :place %><br>
-    <%= f.text_field :place %>
+    <%= f.text_field :transport, :placeholder => "Transport" %>
+  </div>
+  <div class="field">
+    <%= f.number_field :nbpart, :placeholder => "Nombre de participants souhaités" %>
+  </div>
+  <div class="field">
+    <%= f.text_field :price, :placeholder => "Prix" %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude %>
   </div>
   <div class="field">
     <%= f.label :nbpart %><br>

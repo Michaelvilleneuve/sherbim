@@ -1,29 +1,49 @@
 <div class="home-heading">
-	<div id="map" style="width:100%; height:800px;"></div>
+	<div id="map" class="heading-map"></div>
+	<div class="heading-content">
+		<h2 class="heading-title">Choississez votre ville pour découvrir les demandes de service</h2>
+		<span class="heading-input_container">
+			<input id="place" class="heading-input" type="text">
+			<label for="place" class="heading-label">Votre ville</label>
+		</span>
+	</div>
 </div>
 
-<a href="/services/new" class="btn-ask">
+<button class="btn-ask" data-link="services/new">
 	<span class="btn-ask_icon"></span>
 	<span class="btn-ask_text">
-		<span>Demander un service</span>
+		<span class="ask">Demander un service</span>
+		<span class="cancel">Annuler</span>
 	</span>
-</a>
+</button>
+
+<div class="popup popup-ask">
+	<!-- <span class="popup-close"></span> -->
+	<div class="popup-content"></div>
+</div>
 
 <div class="service-container">
 	<div class="container">
-		<!-- Services list -->
-		<ul class="service-list || row">
-			<% @services.each do |service| %>
+		<div class="row">
+			<div class="filters">
+				<ul class="category-list">
+					<li>Coup de main</li>
+					<li>Transport</li>
+				</ul>
+			</div>
+			<!-- Services list -->
+			<ul class="service-list">
+				<% @services.each do |service| %>
 				<li class="service-item col-xs-12">
 					<figure class="service-fig">
 						<%= image_tag service.user.try(:image) %>
 					</figure>
 					<div class="service-item_content">
 						<h3 class="service-item_title"><%= service.title %></h3>
-						<ul class="category-list">
-							<li class="category-item"><%= service.category.title %></li>
-						</ul>
 						<span class="service-points"><%= service.price %> pts</span>
+						<ul class="service_categories">
+							<li><%= service.category.title %></li>
+						</ul>
 						<ul class="detail-list">							
 							<li class="detail-item"><%= service.date.strftime('%e/%m/%Y') %></li>
 							<li class="detail-item"><%= service.place %></li>
@@ -31,7 +51,25 @@
 						<%= link_to "En savoir plus", service, class: 'service-link' %>
 					</div>
 				</li>	
-			<% end %>
-		</ul>
+				<% end %>
+				<li class="service-item col-xs-12">
+						<figure class="service-fig">
+							<img src="http://graph.facebook.com/10208516937582100/picture?width=360&amp;height=210" alt="Picture?width=360&amp;height=210">
+						</figure>
+						<div class="service-item_content">
+							<h3 class="service-item_title">Bouger des meubles</h3>
+							<span class="service-points">40.0 pts</span>
+							<ul class="category-list">
+								<li class="category-item">Coup de main</li>
+							</ul>
+							<ul class="detail-list">							
+								<li class="detail-item"> 4/02/2016</li>
+								<li class="detail-item">Bruges, France</li>
+							</ul>						
+							<a class="service-link" href="/services/8">En savoir plus</a>
+						</div>
+					</li>
+			</ul>
+		</div>
 	</div>
 </div>
