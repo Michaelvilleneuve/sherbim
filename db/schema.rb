@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204075112) do
+ActiveRecord::Schema.define(version: 20160204081442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string   "title"
@@ -52,8 +59,10 @@ ActiveRecord::Schema.define(version: 20160204075112) do
     t.integer  "nbpart"
     t.string   "longitude"
     t.string   "latitude"
+    t.integer  "category_id"
   end
 
+  add_index "services", ["category_id"], name: "index_services_on_category_id", using: :btree
   add_index "services", ["user_id"], name: "index_services_on_user_id", using: :btree
 
   create_table "transactions", force: :cascade do |t|
@@ -89,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160204075112) do
   add_foreign_key "comments", "users"
   add_foreign_key "participants", "services"
   add_foreign_key "participants", "users"
+  add_foreign_key "services", "categories"
   add_foreign_key "services", "users"
   add_foreign_key "transactions", "services"
 end

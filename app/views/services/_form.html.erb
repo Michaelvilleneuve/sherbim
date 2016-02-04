@@ -15,6 +15,10 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
+    <label>Catégorie :</label><br>
+    <%= collection_select(:service, :category_id, Category.all, :id, :title, :prompt => 'Veuillez sélectionner une catégorie') %>
+  </div>
+  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
