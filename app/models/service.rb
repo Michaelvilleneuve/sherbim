@@ -39,6 +39,6 @@ class Service < ActiveRecord::Base
   end
 
   def belongs_to?(a_user)
-  	user == a_user
+    user == a_user
   end
 end
