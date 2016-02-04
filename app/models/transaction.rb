@@ -14,8 +14,7 @@ class Transaction < ActiveRecord::Base
   def self.execute(id)
   	@transactions = Transaction.where(:service_id => id).all
   	@transactions.each do |transaction|
-  		if !transaction.status
-
+  		if !transaction[:status]
 	  		# On débite le débiteur 
 	  		@debiteur = transaction[:debit]
 	  		@debiteur = User.find @debiteur
