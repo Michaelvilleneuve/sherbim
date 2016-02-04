@@ -40,12 +40,12 @@ class User < ActiveRecord::Base
   end
   
   def debit(price)
-    points -= price
+    self.points -= price
     save
   end
 
   def credit(price)
-    points += price
+    self.points += price
     save
   end
 end
