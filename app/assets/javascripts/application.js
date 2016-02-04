@@ -12,9 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+// require_tree .
+var $document = $(document),
+		$window = $(window),
+		$body = $('body');
 
-$(document).ready(function() {	
+$document.ready(function() {	
 
 	var $popup = $( '.popup' );
 	var $button = $( '.btn-ask' );
@@ -25,10 +28,31 @@ $(document).ready(function() {
 	$button.on('click', function() {
 		$button.toggleClass('_active');
 		$popup.toggleClass('_active');
-	})
+
+	});
+
+	// Burger menu
+	var $burger = $('.burger-menu'),
+			$mainNav = $('.main-nav');
+
+	$burger.on('click', function() {
+		$burger.toggleClass('is-active');
+		$mainNav.toggleClass('is-visible');
+	});
+
+	$window.on('scroll', function() {
+		
+		if ($window.scrollTop() > 40) {
+			$burger.addClass('is-shown').removeClass('is-active');	
+			$mainNav.addClass('is-hidden').removeClass('is-visible');
+		} else {
+			$burger.removeClass('is-shown');
+			$mainNav.removeClass('is-hidden');
+		}
+	});
 });
 
 // Load map
-$(document).on('page:load', function(){
+$document.on('page:load', function(){
 	initMap();
 });
