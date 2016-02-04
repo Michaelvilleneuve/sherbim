@@ -27,8 +27,9 @@
 		<div class="row">
 			<div class="filters">
 				<ul class="category-list">
-					<li>Coup de main</li>
-					<li>Transport</li>
+					<% @categories.each do |category| %>
+						<li><%= category.title %></li>
+					<% end %>
 				</ul>
 			</div>
 			<!-- Services list -->

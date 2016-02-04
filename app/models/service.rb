@@ -34,7 +34,7 @@ class Service < ActiveRecord::Base
   	statut = false
   	save
   	transactions.each do |transaction|
-  		transaction.execute(price)
+  		transaction.execute
   	end
   end
 

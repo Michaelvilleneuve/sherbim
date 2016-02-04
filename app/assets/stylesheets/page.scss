@@ -19,7 +19,7 @@
 		width: 100%;
 		height: 100%;
 		background: $orange;
-		background: linear-gradient(to bottom, $orange, #fd3f59);
+		background: linear-gradient(to bottom, $orange, $fushia);
 		opacity: .3;
 	}
 }
@@ -35,7 +35,7 @@
 }
 
 .heading-title {
-	max-width: 25em;
+	max-width: 18em;
 	margin: 0 0 .5em;
 	font-size: 2em;
 	font-weight: 700;
@@ -112,9 +112,8 @@
 
 .btn-ask_icon {
 	display: block;
-	width: 5em;
+	width: 2em;
 	height: 5em;
-	line-height: 5em;
 	color: #fff;
 
 	opacity: 1;
@@ -126,7 +125,7 @@
 		position: absolute;
 		top: 50%;
 		left: 50%;;
-		width: 1em;
+		width: .75em;
 		height: .15em;
 		background-color: #fff;
 		transform: translate(-50%,-50%);
@@ -155,7 +154,7 @@
 	z-index: 99;
 	position: absolute;
 	top: 0;
-	left: 5em;	
+	left: 2em;	
 	display: block;
 	width: 5em;
 	height: 5em;
@@ -207,20 +206,38 @@
 
 // Filters
 .filters {	
+	display: table;
+	width: 100%;
 	height: 4em;
 	margin-top: -4em;
-	line-height: 4em;
 	background-color: #FFF;
 }
 
 .category-list {
-	margin-bottom: 0;
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0 1em;
 	line-height: inherit;
-	font-size: 1em;
 
 	li {
 		display: inline-block;
+		margin-right: .5em;
+		padding: .3em .7em;
 		font-size: .8em;
+		color: $grey-light;
+		border: 1px solid $grey-light;
+		border-radius: 2em;
+		cursor: pointer;
+		transition: all .2s ease-in-out;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		&:hover {
+			color: $black;
+			border-color: $black;
+		}
 	}
 }
 
@@ -299,7 +316,7 @@
 	color: #fff;
 	text-align: center;
 	text-transform: uppercase;
-	background-color: darken($orange, 15%);
+	background-color: darken($orange, 12.5%);
 	border-radius: 0 0 0 2em;
 
 	.number {
@@ -339,17 +356,12 @@
 	}
 
 	&:hover {
-		background-color: $orange;
 		text-decoration: none;
 
 		&:before {
 			max-height: 100%;
 			transition: max-height .2s ease-out;
 		}
-	}
-
-	&:visited {
-		color: #fff;
 	}
 }
 
