@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-// require_tree .
+//= require_tree .
 
 $(document).ready(function() {	
 
@@ -26,39 +26,6 @@ $(document).ready(function() {
 		$button.toggleClass('_active');
 		$popup.toggleClass('_active');
 	})
-
-	// function openPopup(){
-	// 	popup.addClass('_active');
-	// 	button.addClass('_active');
-	// }
-
-	// function closePopup(){
-	// 	popup.removeClass('_active');
-	// 	button.removeClass('_active');
-	// }
-
-	// button.on('click', function() {
-	// 	var target = $(this).attr('data-link');
-	// 	if(!popup.hasClass('_active')){
-	// 		$('.popup-content').load( target+'.js',  openPopup);
-	// 	}else{
-	// 		closePopup();
-	// 	}
-	// });
-
-	// popupClose.click(function() {
-	// 	closePopup();
-	// });
-
-	// if(!popup.hasClass('_active')){
-	// 	$(document).mouseup(function (e){
-	// 		var popupContent = $( '.popup-content' )
-	// 		if (!popupContent.is(e.target) && popupContent.has(e.target).length === 0
-	// 			&& !popupClose.is(e.target) && popupClose.has(e.target).length === 0) {
-	// 			closePopup();
-	// 	}
-	// });
-	// }
 });
 
 // Load map
