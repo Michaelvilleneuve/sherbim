@@ -2,10 +2,14 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :check_user, only: [:show, :edit, :update, :destroy]
 
+  # Make someone admin
+  def makeadmin
+    User.makeadmin(@current_user[:id])
+  end
   # GET /users
   # GET /users.json
   def index
-    if @current_user[:id] == 3
+    if @current_user[:role] == 'admin'
       @users = User.all
     else 
       redirect_to root_path
