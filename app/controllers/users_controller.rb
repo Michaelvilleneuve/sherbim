@@ -87,7 +87,9 @@ class UsersController < ApplicationController
     end
     def check_user
       if @current_user.id != @user.id
-        redirect_to root_path
+        unless @current_user[:role] == 'admin'
+          redirect_to root_path
+        end
       end
     end
     # Never trust parameters from the scary internet, only allow the white list through.
