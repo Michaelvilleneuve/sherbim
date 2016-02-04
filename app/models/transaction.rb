@@ -14,10 +14,10 @@ class Transaction < ActiveRecord::Base
   belongs_to :service
   belongs_to :worker, class_name: 'User'
 
-  def execute
+  def execute(price)
     # Pay everyone
-    service.user.debit amount
-    worker.credit amount
+    service.user.debit price
+    worker.credit price
     done = true
     save
   end
