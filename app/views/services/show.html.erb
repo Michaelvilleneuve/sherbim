@@ -1,9 +1,9 @@
 <div class="notice">
-  <span><%= notice =%>Vous participez</span>
+  <span><%= notice =%></span>
 </div>
 <div class="service-container">
-  <div class="service-banner" style="background-color:<%= @service.category.color unless @service.category.color.nil?  %>">
-    <i class="icon-category pe-7s-<%= @service.category.glyph unless @service.category.glyph.nil? %>"></i>
+  <div class="service-banner" style="<% unless @service.category.nil? %>background-color:<%= @service.category.color unless @service.category.color.nil?  %><% end %>">
+    <% unless @service.category.nil? %><i class="icon-category pe-7s-<%= @service.category.glyph unless @service.category.glyph.nil? %>"></i><% end %>
     <h2 class="service-title"><%= @service.title %></h2>
     <!-- Nb de points -->
     <span class="service-points">
@@ -40,6 +40,6 @@
         </div>
       </div>
     </div>
-    <div id="map" class="service-map"></div>
+    <div id="map" data-id="<%= @service.id %>" class="service-map"></div>
   </div>
 </div>
