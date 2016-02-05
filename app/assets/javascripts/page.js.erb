@@ -37,7 +37,7 @@ function showMarkers(id) {
 					      '<h3 style=" font-size: 14px; margin: 6px 0px;">'+val.place+'</h3>'+
 					      '<hr style="border-color: #999;margin:10px 0px;width:20%;">'+
 					      '<div id="bodyContent">'+
-					      '<p>'+val.description.substring(0, 220)+'</p>'+
+					      '<p>'+val.description+'</p>'+
 				'<a href="/services/'+val.id+'">'+
 						'Voir en détail'+
 				'</div>'+
@@ -85,10 +85,17 @@ var style = [{"featureType":"landscape","stylers":[{"saturation":-100},{"lightne
     center: {lat : 46.3390728,lng :1.143419},
     zoom: 6,
  	  draggable: true,
-    styles: style
+    styles: style,
+    mapTypeControl: true,
   });
   showMarkers();
 
 }
 google.maps.event.addDomListener(window, "load", initMap);
-initMap();
+$(document).on('click','#place',function(){
+  $('.heading-content').fadeOut();
+  $('.heading-map').toggleClass('hide-af');
+  setTimeout(function(){
+    $('.heading-map').toggleClass('remove-af');
+  })
+})
