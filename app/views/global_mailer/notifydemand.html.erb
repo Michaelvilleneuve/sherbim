@@ -2,7 +2,13 @@ Bonjour <%= @user.name %>,<br>
 
 Super, un utilisateur souhaite vous aider par rapport à votre demande de service " <%= @service.title %> " <br>
 
-Allez vite lui répondre <a href="http://<%= Rails.root %>/users/<%= @service.user.id %>">à cette adresse </a>
-
+Voici les infos des participants : <br>
+<% @service.users.each do |user| %>
+	====<br>
+	<% user.name %><br>
+	<% user.phone %><br>
+	<% user.description %><br>
+	====
+<% end %> 
 <br>
 Bonne journée
