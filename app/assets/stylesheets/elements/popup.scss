@@ -175,28 +175,5 @@
 			transition: transform .3s ease-out .7s, opacity .4s ease-in-out .7s;
 		}
 	}
-
-	.new_service {
-		max-width: 20em;
-		margin: auto;
-		padding-bottom: 2em;
-
-		input,
-		textarea {
-			margin: 1em 0;
-			padding: .75em 1em;
-			font-size: .8em;
-			width: 100%;
-			background: #fff;
-			// border-radius: 2em;
-		}
-
-		input[type="submit"] {
-			max-width: 14em;
-			color: #fff;
-			background: darken($orange, 12.5%);
-			border-radius: 2em;
-		}
-	}
 }
 

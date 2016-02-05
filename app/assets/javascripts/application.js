@@ -15,7 +15,8 @@
 //= require_tree .
 var $document = $(document),
 		$window = $(window),
-		$body = $('body');
+		$body = $('body'),
+		$notice = $('.notice');
 
 $document.ready(function() {	
 
@@ -48,6 +49,16 @@ $document.ready(function() {
 			$mainNav.removeClass('scroll');
 		}
 	});
+
+	$notice.on('change', function() {
+
+		if ($notice.length > 0) {
+			$notice.addClass('is-shown');
+			setTimeout(function() {
+				$notice.removeClass('is-shown');
+			}, 3000);
+		}
+	})
 });
 
 // Load map

@@ -1,6 +1,20 @@
-<h1>Editing Service</h1>
+<div class="service-container">
+  <div class="service-banner" style="<% unless @service.category.nil? %>background-color:<%= @service.category.color unless @service.category.color.nil?  %><% end %>">
+    <% unless @service.category.nil? %><i class="icon-category pe-7s-<%= @service.category.glyph unless @service.category.glyph.nil? %>"></i><% end %>
+    <h2 class="service-title"><%= @service.title %></h2>
+    <!-- Liste des caractéristiques -->
+    <ul class="service-details">
+      <li><i class="icon pe-7s-map-marker"></i> <%= @service.place %></li>
+      <li><i class="icon pe-7s-pin"></i> <%= @service.date.strftime('%e/%m/%Y') %></li>
+      <li><i class="icon pe-7s-users"></i> <%= @service.nbpart %></li>
+    </ul>
+  </div>
+	<div class="service-content">
+		<h2 class="main-title">Modifier ma demande :</h2>
+		<%= render 'form' %>
+	</div>
+</div>
 
-<%= render 'form' %>
 
 <%= link_to 'Show', @service %> |
 <%= link_to 'Back', services_path %>
