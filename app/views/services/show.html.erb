@@ -33,7 +33,7 @@
               <%= link_to 'Modifier ma demande', edit_service_path(@service), class: 'enquire-btn modify' %> 
               <%= button_to 'Ce service m\'a été rendu', terminate_service_path(@service) %>
             <% else %>
-              <%= link_to 'Voir toutes les annonces', root_path, class: 'enquire-btn all' %>
+              <%= link_to 'Voir toutes les annonces', root_path, class: 'enquire-btn modify' %>
               <%= button_to 'Je participe', participate_to_service_path(@service) %>
             <% end %>
           <% end %>

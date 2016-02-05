@@ -66,6 +66,12 @@
 	border-radius: 2em;
 	transition: border-color .2s ease-in-out;
 
+	&.temporary-button {
+		width: 10em;
+		text-align: center;
+		cursor: pointer;
+	}
+
 	&:focus {
 		border-color: $orange;
 	}
