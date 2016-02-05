@@ -3,38 +3,30 @@
     <%= notice %>
   </span>
 </div>
-<h1>Mon profil</h1>
-<%= image_tag @user.image %>
-<p>
-<strong><i class="pe-7s-user"></i></strong>
-<%= @user.name %>
-</p>
+<div class="service-banner gradient">
+  <i class="icon-category pe-7s-smile"></i>
+  <h2 class="service-title">Mon profil</h2>
+</div>
 
+<div class="service-content">
+  <div class="service-enquire">
+    <figure class="enquire-fig">
+      <%= image_tag @user.image unless @user.image.nil? %>
+    </figure>
+    <div class="enquire-container">
+      <h3 class="enquire-name"><%= @user.name %></h3>
+      <p><strong><i class="icon pe-7s-home"></i></strong><%= @user.email %></p>
+      <p><strong><i class="icon pe-7s-phone"></i></strong><%= @user.phone %></p>
+      <p><strong><i class="icon pe-7s-id"></i></strong><%= @user.description %></p>
+      <p><strong><i class="icon pe-7s-rocket"></i></strong><%= @user.age %></p>
+      <p><strong><i class="icon pe-7s-piggy"></i></strong><%= @user.points.to_i %> crédits</p>
+      <div class="enquire-btn_container">
+        <%= link_to 'Modifier mon profil', edit_user_path(@user), class: 'enquire-btn modify' %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong><i class="pe-7s-home"></i></strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong><i class="pe-7s-phone"></i></strong>
-  <%= @user.phone %>
-</p>
- <p>
-  <strong><i class="pe-7s-id"></i></strong>
-  <%= @user.description %>
-</p>
-<p>
-  <strong><i class="pe-7s-rocket"></i></strong>
-  <%= @user.age %>
-</p>
-
-<p>
-  <strong><i class="pe-7s-piggy"></i></strong>
-  <%= @user.points.to_i %> crédits
-</p>
-
-<%= link_to 'Modifier mon profil', edit_user_path(@user) %>
 <div class="service-container user">
   <h2>Mes annonces</h2>
     
@@ -71,8 +63,7 @@
               <li><%= participant.name %></li>
             <% end %>
             </ul>
-            <%= link_to 'Modifier ma demande', edit_service_path(@service), class: 'service-link' %> 
-            <%= button_to 'Ce service m\'a été rendu', terminate_service_path(@service), class: 'service-link' %>
+            <%= link_to 'Modifier ma demande', edit_service_path(service), class: 'service-link' %> 
           </div>
         </li> 
       <% end %>
