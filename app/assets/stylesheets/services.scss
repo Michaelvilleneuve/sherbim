@@ -172,6 +172,7 @@
 
 	&[type="submit"] {
 		color: darken($orange, 12.5%);
+		background: none;
 		border-color: darken($orange, 12.5%);
 
 		&:hover {
