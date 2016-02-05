@@ -114,21 +114,44 @@
 
 // Points
 .user-points {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 2em;
+	position: absolute;
+	top: 0;
+	right: 2em;
+	display: inline-block;	
 	height: 2em;
 	line-height: 2em;
 	font-size: 1em;
 	color: #fff;
 	background-color: rgba($fushia, .5);
+	transition: all .2s ease-in-out;
 
 	.is-hidden & {
 		opacity: 1;
 	}
 
+	&:hover {
+		text-decoration: none;
+		background-color: rgba($fushia, .3);
+		
+		span {
+		}
+
+		.icon {
+			color: darken($fushia, 25%);
+		}
+	}
+
+	.icon {
+		float: left;
+		display: inline-block;
+		width: 2em;
+		height: 2em;
+		line-height: 2em;
+		background-color: darken($fushia, 10%);
+	}
+
 	span {
+		padding: 0 1em;
 		font-size: .7em;
 	}
 }
