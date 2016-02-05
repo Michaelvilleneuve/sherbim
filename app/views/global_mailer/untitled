@@ -1,0 +1,2 @@
+<h1>Salut <%= @user.name %></h1>
+Bien

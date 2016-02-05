@@ -21,9 +21,9 @@
 #
 
 class Service < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, dependent: :destroy 
   belongs_to :category
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :users, dependent: :destroy 
   has_many :transactions, dependent: :destroy 
   validates :title, presence: true
   validates :nbpart, presence: true
