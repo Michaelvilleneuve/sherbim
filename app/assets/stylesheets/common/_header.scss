@@ -50,7 +50,7 @@
 		padding-left: .2em;
 		font-size: .8em;
 		color: $orange;
-		display: none;
+		transition: color .3s ease-in-out;
 	}
 
 	&:hover {
@@ -70,6 +70,10 @@
 
 		circle {
 			fill: #fff;
+		}
+
+		span {
+			color: darken($orange, 12.5%);
 		}
 	}
 }
