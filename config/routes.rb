@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :categories
   resources :comments
 
-  get 'page/index'
+  get ':slug' => 'pages#index'
+
   post 'services/:id/participer' => 'services#participate', as: 'participate_to_service'
   post 'services/:id/terminate' => 'services#terminate', as: 'terminate_service'
   # Make someone admin (provisoire)

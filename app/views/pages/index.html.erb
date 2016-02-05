@@ -16,7 +16,7 @@
 			<div class="filters">
 				<ul class="category-list">
 					<% @categories.each do |category| %>
-						<li><i class="pe-7s-<%= category.glyph unless category.glyph.nil? %>"></i><%= category.title %></li>
+						<li><a href="/<%= category.slug unless category.slug.nil? %>"><i class="pe-7s-<%= category.glyph unless category.glyph.nil? %>"></i><%= category.title %></a></li>
 					<% end %>
 				</ul>
 			</div>
@@ -32,7 +32,7 @@
 							<h3 class="service-item_title"><%= service.title %></h3>
 							<span class="service-item_points"><%= service.price.to_i %> pts</span>
 							<ul class="service-category-list">
-								<li class="category-item"><%= service.category.title unless service.category.nil? %></li>
+								<li class="category-item"><a href="<%= service.category.slug unless service.category.slug.nil? %>"><%= service.category.title unless service.category.nil? %></a></li>
 							</ul>
 							<ul class="detail-list">							
 								<li class="detail-item"><%= service.user.name %> <%= image_tag service.user.image unless service.user.image.nil? %> </li>

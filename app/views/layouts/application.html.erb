@@ -20,7 +20,6 @@
         </button>
         <ul class="main-nav_list">
           <% if @current_user %>
-            <li><%= link_to "Mon profile", @current_user, title: "Mon profil" %></li>
             <li><a href="/" title="A propos">A propos</a></li>
             <li><%= link_to "Se deconnecter", signout_path, id: "sign_out", title: "Se déconnecter" %></li>
           <% else %>
@@ -30,9 +29,10 @@
         </ul>
       </nav>
       <% if @current_user %>
-        <span class="user-points">
+        <a href="/users/<%= @current_user.id %>" class="user-points">
+          <i class="icon pe-7s-user"></i>
           <span><%= @current_user.points.to_i %> points</span>
-        </span>
+        </a>
       <% end %>
     </header>
 
