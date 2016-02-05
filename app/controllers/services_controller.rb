@@ -34,7 +34,7 @@ class ServicesController < ApplicationController
     @service.users << @current_user
     GlobalMailer.notifydemand(@service).deliver
     Transaction.create worker: @current_user, service: @service
-    redirect_to root_path
+    redirect_to @service, notice: 'Vous participez désormais à cet évènement ! '
   end
 
   def terminate

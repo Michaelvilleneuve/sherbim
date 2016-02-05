@@ -1,5 +1,5 @@
 class GlobalMailer < ApplicationMailer
-	default from: "contact.sherbim@gmail.com"
+	default from: "contact@sherbim.herokuapp.com"
 	def welcome(user)
     	@user = user
     	mail(to: @user.email, subject: 'Bienvenue chez Sherbim')
