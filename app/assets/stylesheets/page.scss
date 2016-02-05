@@ -71,9 +71,9 @@
 
 .service-container {
 	background-color: #eee;
-}
-.service-container,.user  {
-	padding : 20px;
+	&.user {
+		padding : 1em;
+	}
 }
 
 // Ask a service btn
