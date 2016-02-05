@@ -1,5 +1,6 @@
 <div class="service-container">
-  <div class="service-banner">
+  <div class="service-banner" style="background-color:<%= @service.category.color unless @service.category.color.nil?  %>">
+    <i class="icon pe-7s-<%= @service.category.glyph unless @service.category.glyph.nil? %>"></i>
     <h2 class="service-title"><%= @service.title %></h2>
     <!-- Nb de points -->
     <span class="service-points">
@@ -15,15 +16,20 @@
   </div>
   <div class="service-content">
 
+    <div class="table">
 
-    <p class="service-state">  
-      <% if @service.statut %>
-        Ce service a déjà été rendu
-      <% else %>
-        Ce service est toujours demandé par <%= link_to @service.user.name, @service.user, title: "Voir le profil" %>
-      <% end %>
-    </p>
+      <div class="service-enquire">
+        <figure class="enquire-fig">
+          <%= image_tag @service.user.image unless @service.user.image.nil? %>
+        </figure>
+        <div class="enquire-intro">
+          <h3 class="enquire-name"><%= @service.user.name %></h3>    
+          <p class="enquire-description"><%= @service.user.description %></p>
+        </div>
+      </div>
 
+      <div id="map" class="service-map"></div>
+    </div>
 
 
   <!-- Description du service -->
