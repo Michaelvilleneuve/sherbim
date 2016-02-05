@@ -28,6 +28,7 @@ class Service < ActiveRecord::Base
   validates :title, presence: true
   validates :nbpart, presence: true
   validates :category_id, presence: true
+  default_scope {order("date ASC")}
 
   def terminate
   	done = true
