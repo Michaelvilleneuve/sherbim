@@ -80,34 +80,69 @@
 	}
 }
 
-.service-description {
-	max-width: 45em;
-	margin: 0 auto;
-	padding: 4em 0;
+.service-map {
+	width: 100%;
+	height: 20em;
 }
 
-.service-enquire,
-.service-map {
-	display: table-cell;
-	width: 50%;	
+.service-enquire {
+	width: 100%;
+	overflow: hidden;
 }
 
 .enquire-fig {
-	float: left;
-	width: 25%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	height: auto;
+	width: 30%;
+	overflow: hidden;
 
 	img {
-		width: 100%;
+		width: auto;;
+		min-width: 100%;
 		height: auto;
+		min-height: 100%;
 	}
 }
 
-.enquire-intro {
-	float: left;
-	width: 75%;
-	padding: 1em 0;
-	}
+.enquire-container {
+	float: right;
+	width: 70%;
+	padding: 3em 2em 2em;
+}
 
 .enquire-name {
 	margin: 0;
+}
+
+.enquire-btn_container {
+	overflow: hidden;
+}
+
+.enquire-btn,
+.button_to {
+	display: inline-block;
+	padding: .5em 1em;
+	font-size: .8em;
+	color: #fff;
+	background: none;
+	border: .15em solid $grey-light;
+	border-radius: 2em;
+
+	&:hover {
+		color: #fff;
+		text-decoration: none;
+	}
+
+	&.modify {
+		color: $grey-light;
+		border-color: $grey-light;
+	}
+
+	&.button_to {
+		color: darken($orange, 12.5%);
+		border-color: darken($orange, 12.5%);
+	}
 }
