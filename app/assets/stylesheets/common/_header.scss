@@ -227,12 +227,12 @@
 	right: 2em;
 	display: inline-block;
 	height: 2em;
-	padding: 0 1em;
 	line-height: 2em;
 	color: #fff;
 	background-color: darken($orange, 12.5%);
 
 	span {
+		padding: 0 1em;
 		font-size: .8em;
 	}
 }
