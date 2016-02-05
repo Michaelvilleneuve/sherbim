@@ -10,7 +10,7 @@
 	padding: 2em 2em 3em;
 	text-align: center;
 
-	.icon {
+	.icon-category {
 		top: -1em;
 		display: inline-block;
 		width: 2em;
@@ -44,11 +44,9 @@
 	}
 }
 
-.service-content {
-}
-
 .service-details {
-	margin-top: 2em;	
+	max-width: 20em;
+	margin: 2em auto 0;	
 	color: #fff;
 	text-align: center;
 

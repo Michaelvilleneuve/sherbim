@@ -1,17 +1,16 @@
 <div class="service-container">
   <div class="service-banner" style="background-color:<%= @service.category.color unless @service.category.color.nil?  %>">
-    <i class="icon pe-7s-<%= @service.category.glyph unless @service.category.glyph.nil? %>"></i>
+    <i class="icon-category pe-7s-<%= @service.category.glyph unless @service.category.glyph.nil? %>"></i>
     <h2 class="service-title"><%= @service.title %></h2>
     <!-- Nb de points -->
     <span class="service-points">
-      <span><%= @service.price.to_i %> Points</span>
+      <span><%= @service.price.to_i %> points</span>
     </span>
     <!-- Liste des caractéristiques -->
     <ul class="service-details">
-      <li><%= @service.place %></li>
-      <li><%= @service.date.strftime('%e/%m/%Y') %></li>
-      <li><%= @service.nbpart %></li>
-      <li></li>
+      <li><i class="icon pe-7s-map-marker"></i> <%= @service.place %></li>
+      <li><i class="icon pe-7s-pin"></i> <%= @service.date.strftime('%e/%m/%Y') %></li>
+      <li><i class="icon pe-7s-users"></i> <%= @service.nbpart %></li>
     </ul>
   </div>
   <div class="service-content">
@@ -30,7 +29,6 @@
 
       <div id="map" class="service-map"></div>
     </div>
-
 
   <!-- Description du service -->
   <p class="service-description"><%= @service.description %></p>
