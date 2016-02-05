@@ -50,15 +50,13 @@ $document.ready(function() {
 		}
 	});
 
-	$notice.on('change', function() {
-
-		if ($notice.length > 0) {
-			$notice.addClass('is-shown');
-			setTimeout(function() {
-				$notice.removeClass('is-shown');
-			}, 3000);
-		}
-	})
+	if ($notice.length > 0) {
+		$notice.addClass('is-shown');
+		setTimeout(function() {
+			$notice.removeClass('is-shown');
+		}, 3000);
+	}
+	
 });
 
 // Load map
