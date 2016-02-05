@@ -32,6 +32,7 @@ class ServicesController < ApplicationController
 
   def participate
     @service.users << @current_user
+    GlobalMailer.notifydemand(@service).deliver
     Transaction.create worker: @current_user, service: @service
     redirect_to root_path
   end
@@ -69,6 +70,7 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
+        GlobalMailer.confirmservice(@current_user).deliver
         format.html { redirect_to @service, notice: 'Service was successfully created.' }
         format.json { render :show, status: :created, location: @service }
       else

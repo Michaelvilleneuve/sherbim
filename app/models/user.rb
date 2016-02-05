@@ -30,12 +30,13 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.name = auth.info.name
       user.image = 'https://graph.facebook.com/'+auth.uid.to_s+'/picture?width=360&height=210'
-      user.age = auth.info.age
+      user.email = auth.info.email
       user.points = 100
       user.role = 'customer'
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
+      GlobalMailer.welcome(user)
     end
   end
   
