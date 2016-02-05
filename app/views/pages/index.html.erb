@@ -1,10 +1,9 @@
 <div class="home-heading">
 	<div id="map" class="heading-map"></div>
 	<div class="heading-content">
-		<h2 class="heading-title">Choississez votre ville pour découvrir les demandes de service</h2>
+		<h2 class="heading-title">Des gens ont besoin de votre aide, explorez les</h2>
 		<span class="heading-input_container">
-			<input id="place" class="heading-input" type="text">
-			<label for="place" class="heading-label">Votre ville</label>
+			<input id="place" class="heading-input" type="text" placeholder="Entrez la carte">
 		</span>
 	</div>
 </div>
@@ -15,6 +14,7 @@
 		<div class="row">
 			<div class="filters">
 				<ul class="category-list">
+					<li><a href="/"><i class="icon pe-7s-star"></i>Toutes</a></li>
 					<% @categories.each do |category| %>
 						<li><a href="/<%= category.slug unless category.slug.nil? %>"><i class="icon pe-7s-<%= category.glyph unless category.glyph.nil? %>"></i><%= category.title %></a></li>
 					<% end %>

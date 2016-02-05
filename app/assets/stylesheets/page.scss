@@ -21,6 +21,17 @@
 		background: $orange;
 		background: linear-gradient(to bottom, $orange, $fushia);
 		opacity: .3;
+		transition: 0.3s;
+	}
+	&.hide-af {
+		&:after {
+			opacity: 0;
+		}
+	}
+	&.remove-af {
+		&:after {
+			display:none;
+		}
 	}
 }
 
@@ -49,6 +60,7 @@
 
 .heading-input {
 	width: 20em;
+	background-color:#fff;
 	padding: .5em;
 	border: .15em solid transparent;
 	border-radius: 2em;
