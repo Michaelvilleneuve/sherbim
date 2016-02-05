@@ -43,13 +43,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
-      :address              => "smtp.gmail.com",
-      :port                 => 587,
-      :domain               => "mail.google.com",
-      :user_name            => "contact.sherbim@gmail.com",
-      :password             => ENV['GMAIL_PASS'],
-      :authentication       => :plain,
-      :enable_starttls_auto => true,
-      :openssl_verify_mode  => 'none'
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "appb9d62f5eb73f49de8a496cbbdc4b753b.mailgun.org",
+    :user_name => "postmaster@appb9d62f5eb73f49de8a496cbbdc4b753b.mailgun.org",
+    :password => ENV['MAILGUN_PASSWORD']
   }
 end

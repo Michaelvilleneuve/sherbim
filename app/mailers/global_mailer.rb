@@ -1,5 +1,5 @@
 class GlobalMailer < ApplicationMailer
-	default from: "contact.sherbim@gmail.com"
+	default from: "contact@appb9d62f5eb73f49de8a496cbbdc4b753b.mailgun.org"
 	def welcome(user)
     	@user = user
     	mail(to: @user.email, subject: 'Bienvenue chez Sherbim')
