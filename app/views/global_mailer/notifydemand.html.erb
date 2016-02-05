@@ -2,12 +2,12 @@ Bonjour <%= @user.name %>,<br>
 
 Super, un utilisateur souhaite vous aider par rapport à votre demande de service " <%= @service.title %> " <br>
 
-Voici les infos des participants :
+Voici les infos des participants : <br>
 <% @service.users.each do |user| %>
-	====
+	====<br>
 	<% user.name %><br>
 	<% user.phone %><br>
-	<% user.description %>
+	<% user.description %><br>
 	====
 <% end %> 
 <br>
