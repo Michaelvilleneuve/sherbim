@@ -71,11 +71,8 @@
               <li><%= participant.name %></li>
             <% end %>
             </ul>
-            <div class="user-info">
-              <%= image_tag service.user.image unless service.user.image.nil? %> 
-              <span class="user-name"><%= service.user.name %></span>
-            </div>
-            <%= link_to "En savoir plus", service, class: 'service-link' %>
+            <%= link_to 'Modifier ma demande', edit_service_path(@service), class: 'service-link' %> 
+            <%= button_to 'Ce service m\'a été rendu', terminate_service_path(@service), class: 'service-link' %>
           </div>
         </li> 
       <% end %>
