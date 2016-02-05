@@ -9,6 +9,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <!-- Header -->
     <header class="main-header">
       <a class="header-logo" title="Sherbim" href="/">Shërbim</a>
       <nav class="main-nav">
@@ -29,7 +30,9 @@
         </ul>
       </nav>
       <% if @current_user %>
-        <span class="user-points"><%= @current_user.points.to_i %></span>
+        <span class="user-points">
+          <span><%= @current_user.points.to_i %> points</span>
+        </span>
       <% end %>
     </header>
 
@@ -45,12 +48,15 @@
       <div class="popup-content"></div>
     </div>
 
+    <!-- Main content -->
     <main role="main" id="#main">
       <%= yield %>
     </main>
+    <!--./ Main content -->
 
+    <!-- Footer -->
     <footer class="main-footer">
-      Hello John !
+      <span class="copyright">&copy; Copyright 2016</span>
     </footer>
 
   </body>
