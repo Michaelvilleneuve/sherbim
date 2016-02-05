@@ -8,7 +8,7 @@
 #  description :text
 #  place       :string
 #  transport   :string
-#  statut      :boolean
+#  done        :boolean
 #  price       :float
 #  date        :datetime
 #  code        :string

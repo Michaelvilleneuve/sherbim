@@ -8,7 +8,7 @@
 #  description :text
 #  place       :string
 #  transport   :string
-#  statut      :boolean
+#  done        :boolean
 #  price       :float
 #  date        :datetime
 #  code        :string
@@ -30,8 +30,7 @@ class Service < ActiveRecord::Base
   validates :category_id, presence: true
 
   def terminate
-  	# TODO done or terminated instead of statut
-  	statut = false
+  	done = true
   	save
   	transactions.each do |transaction|
   		transaction.execute

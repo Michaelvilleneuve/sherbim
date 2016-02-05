@@ -8,7 +8,7 @@
 #  description :text
 #  place       :string
 #  transport   :string
-#  statut      :boolean
+#  done        :boolean
 #  price       :float
 #  date        :datetime
 #  code        :string
@@ -27,7 +27,7 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    @services = Service.where(statut: false).all
+    @services = Service.where(done: false).all
   end
 
   def participate
@@ -65,7 +65,7 @@ class ServicesController < ApplicationController
     else
       @service[:user_id] = @current_user.id
       @service[:code] = Time.now.to_formatted_s+@current_user.id.to_s
-      @service[:statut] = false
+      @service[:done] = false
     end
 
     respond_to do |format|

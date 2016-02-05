@@ -34,7 +34,7 @@
   <p class="service-description"><%= @service.description %></p>
 
   <!-- Liens d'autres annonces -->
-  <% unless @service.statut or @current_user.nil? %>
+  <% unless @service.done or @current_user.nil? %>
     <% if @service.belongs_to?(@current_user) %>
       <%= link_to 'Modifier', edit_service_path(@service) %> 
     | <%= button_to 'Terminer ce service', terminate_service_path(@service) %>
