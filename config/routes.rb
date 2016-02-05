@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resource :pages, only: [:index]
   get ':slug' => 'pages#index'
-
+  get 'pages/about' => 'pages#about'
   root to: "pages#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

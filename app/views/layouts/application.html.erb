@@ -43,10 +43,10 @@
         </button>
         <ul class="main-nav_list">
           <% if @current_user %>
-            <li><a href="/" title="A propos">A propos</a></li>
+            <li><a href="/pages/about" title="A propos">A propos</a></li>
             <li><%= link_to "Se deconnecter", signout_path, id: "sign_out", title: "Se déconnecter" %></li>
           <% else %>
-            <li><a href="/" title="A propos">A propos</a></li>
+            <li><a href="/pages/about" title="A propos">A propos</a></li>
             <li><%= link_to "Se connecter", "/auth/facebook", id: "sign_in" %></li>
           <% end %>
         </ul>

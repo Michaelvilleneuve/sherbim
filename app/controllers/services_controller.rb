@@ -32,8 +32,8 @@ class ServicesController < ApplicationController
 
   def participate
     @service.users << @current_user
-    GlobalMailer.notifydemand(@service).deliver
     Transaction.create worker: @current_user, service: @service
+    GlobalMailer.notifydemand(@service).deliver
     redirect_to @service, notice: 'Vous participez désormais à cet évènement ! '
   end
 
