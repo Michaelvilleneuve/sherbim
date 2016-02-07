@@ -38,4 +38,16 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.action_mailer.perform_deliveries = true 
+  config.action_mailer.default_url_options = { :host => "sherbim.herokuapp.com" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "appb9d62f5eb73f49de8a496cbbdc4b753b.mailgun.org",
+    :user_name => "postmaster@appb9d62f5eb73f49de8a496cbbdc4b753b.mailgun.org",
+    :password => ENV['MAILGUN_PASSWORD']
+  }
 end

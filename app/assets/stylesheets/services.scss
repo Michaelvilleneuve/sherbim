@@ -7,9 +7,24 @@
 }
 
 .service-banner {
-	padding: 4em 2em 3em;
-	background: rgba($orange, .5);
-	background: linear-gradient(to bottom, rgba($orange, .5), rgba($fushia, .5));
+	padding: 2em 2em 3em;
+	text-align: center;
+
+	&.gradient {
+	  background: rgba($orange, .5);
+    background: linear-gradient(to bottom, rgba($orange, .5), rgba($fushia, .5));
+	}
+
+	.icon-category {
+		top: -1em;
+		display: inline-block;
+		width: 2em;
+		height: 2em;
+		line-height: 2em;
+		color: #fff;
+		border: .15em solid #fff;
+		border-radius: 50%;
+	}
 }
 
 .service-title {
@@ -34,10 +49,9 @@
 	}
 }
 
-.service-content {}
-
 .service-details {
-	margin-top: 2em;	
+	max-width: 20em;
+	margin: 2em auto 0;	
 	color: #fff;
 	text-align: center;
 
@@ -52,6 +66,7 @@
 }
 
 .service-points {
+	z-index: 10;
 	position: absolute;
 	bottom: -1.5em;
 	left: calc(50% - 5em);
@@ -70,4 +85,99 @@
 	}
 }
 
-.service-description {}
+.service-map {
+	width: 100%;
+	height: 20em;
+}
+
+.service-enquire {
+	width: 100%;
+	overflow: hidden;
+}
+
+.enquire-fig {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	height: auto;
+	width: 30%;
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		min-width: 100%;
+		height: auto;
+	}
+}
+
+.enquire-container {
+	float: right;
+	width: 70%;
+	padding: 3em 2em 2em;
+
+	.icon {
+		width: 1.25em;
+		margin-right: .5em;
+		color: $orange;
+		text-align: center;
+	}
+}
+
+.enquire-name {
+	margin: 0 0 .5em;
+}
+
+.enquire-btn_container {
+	margin-top: 2em;
+	overflow: hidden;
+}
+
+.button_to {
+	display: inline-block;
+	margin-left: 1em;
+
+	&.user {
+		display: block;
+		max-width: 14em;
+		margin: 1em auto 0;
+	}
+}
+
+.enquire-btn,
+.button_to input {
+	display: inline-block;
+	padding: .5em 1em;
+	font-size: .8em;
+	color: #fff;
+	background: none;
+	border: .15em solid $grey-light;
+	border-radius: 2em;
+	transition: all .2s ease-in-out;
+
+	&:hover {
+		color: #fff;
+		text-decoration: none;
+	}
+
+	&.modify {
+		color: $grey-light;
+		border-color: $grey-light;
+
+		&:hover {
+			color: #fff;
+			background: $grey-light;
+		}
+	}
+
+	&[type="submit"] {
+		color: darken($orange, 12.5%);
+		background: none;
+		border-color: darken($orange, 12.5%);
+
+		&:hover {
+			color: #fff;
+			background: darken($orange, 12.5%);
+		}
+	}
+}

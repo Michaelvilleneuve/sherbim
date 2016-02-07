@@ -1,43 +1,45 @@
+<div class="notice">
+  <span><%= notice =%></span>
+</div>
 <div class="service-container">
-  <div class="service-banner">
+  <div class="service-banner" style="<% unless @service.category.nil? %>background-color:<%= @service.category.color unless @service.category.color.nil?  %><% end %>">
+    <% unless @service.category.nil? %><i class="icon-category pe-7s-<%= @service.category.glyph unless @service.category.glyph.nil? %>"></i><% end %>
     <h2 class="service-title"><%= @service.title %></h2>
     <!-- Nb de points -->
     <span class="service-points">
-      <span><%= @service.price.to_i %> Points</span>
+      <span><%= @service.price.to_i %> bims</span>
     </span>
     <!-- Liste des caractéristiques -->
     <ul class="service-details">
-      <li><%= @service.place %></li>
-      <li><%= @service.date.strftime('%e/%m/%Y') %></li>
-      <li><%= @service.nbpart %></li>
-      <li></li>
+      <li><i class="icon pe-7s-map-marker"></i> <%= @service.place %></li>
+      <li><i class="icon pe-7s-pin"></i> <%= @service.date.strftime('%e/%m/%Y') %></li>
+      <li><i class="icon pe-7s-users"></i> <%= @service.nbpart %></li>
     </ul>
   </div>
   <div class="service-content">
+    <div class="service-enquire">
+      <figure class="enquire-fig">
+        <%= image_tag @service.user.image unless @service.user.image.nil? %>
+      </figure>
+      <div class="enquire-container">
+        <h3 class="enquire-name"><%= @service.user.name %></h3>    
+        <p class="enquire-description"><%= @service.user.description %></p>
+        <p class="service-description"><%= @service.description %></p>
 
-
-    <p class="service-state">  
-      <% if @service.statut %>
-        Ce service a déjà été rendu
-      <% else %>
-        Ce service est toujours demandé par <%= link_to @service.user.name, @service.user, title: "Voir le profil" %>
-      <% end %>
-    </p>
-
-
-
-  <!-- Description du service -->
-  <p class="service-description"><%= @service.description %></p>
-
-  <!-- Liens d'autres annonces -->
-  <% unless @service.statut or @current_user.nil? %>
-    <% if @service.belongs_to?(@current_user) %>
-      <%= link_to 'Modifier', edit_service_path(@service) %> 
-    | <%= button_to 'Terminer ce service', terminate_service_path(@service) %>
-    <% else %>
-      <%= link_to 'Toutes les demandes', root_path %> | 
-      <%= button_to 'Participer à l\'évènement', participate_to_service_path(@service) %>
-    <% end %>
-  <% end %>
+        <!-- Liens -->
+        <div class="enquire-btn_container">
+          <% unless @service.done or @current_user.nil? %>
+            <% if @service.belongs_to?(@current_user) %>
+              <%= link_to 'Modifier ma demande', edit_service_path(@service), class: 'enquire-btn modify' %> 
+              <%= button_to 'Ce service m\'a été rendu', terminate_service_path(@service) %>
+            <% else %>
+              <%= link_to 'Voir toutes les annonces', root_path, class: 'enquire-btn modify' %>
+              <%= button_to 'Je participe', participate_to_service_path(@service) %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div id="map" data-id="<%= @service.id %>" class="service-map"></div>
   </div>
 </div>

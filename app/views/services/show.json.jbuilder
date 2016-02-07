@@ -1,1 +1,1 @@
-json.extract! @service, :title, :description, :place, :transport, :statut, :price, :date
+json.extract! @service, :title, :description, :place, :transport, :done, :price, :date

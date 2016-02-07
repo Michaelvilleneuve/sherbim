@@ -1,3 +1,40 @@
+// Ask a service btn
+.btn-ask {
+	z-index: 100;
+	position: fixed;
+	top: 50%;
+	left: 0;
+	background-color: $orange;
+	transform: translateY(-50%);
+
+	&._active {
+		background: darken($orange, 12.5%);			
+	}
+
+	&:hover {
+		background: darken($orange, 12.5%);
+
+		.btn-ask_icon {
+
+			&:before {
+				transform: translate(-50%,-50%) rotate(-180deg) scale(1.2);
+				transition: transform .3s ease-in-out;
+			}
+
+			&:after {
+				transform: translate(-50%,-50%) rotate(-360deg) scale(1.2);
+				transition: transform .3s ease-in-out;
+			}
+		}
+	
+		.btn-ask_text {
+			opacity: 1;
+			transform: translateX(0) scaleX(1);
+			transition: transform .3s $out-expo, opacity .2s ease-in;
+		}
+	}
+}
+
 // Btn to open popup
 .btn-ask_icon {
 	display: block;

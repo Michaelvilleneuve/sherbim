@@ -55,8 +55,7 @@ body {
 }
 
 main {
-	height: 100%;
-	overflow: hidden;
+	min-height: 100%;
 }
 
 
@@ -68,6 +67,11 @@ button {
 }
 
 input {
+	border: none;
+	background: none;
+}
+
+textarea {
 	border: none;
 }
 
@@ -84,4 +88,11 @@ a {
 	&:hover {
 		background: inherit;
 	}
+}
+
+// Helpers
+.table {
+	display: table;
+	width: 100%;
+	margin-bottom: 0;
 }

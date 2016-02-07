@@ -8,7 +8,7 @@
 #  description :text
 #  place       :string
 #  transport   :string
-#  statut      :boolean
+#  done        :boolean
 #  price       :float
 #  date        :datetime
 #  code        :string
@@ -21,17 +21,17 @@
 #
 
 class Service < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, dependent: :destroy 
   belongs_to :category
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :users, dependent: :destroy 
   has_many :transactions, dependent: :destroy 
   validates :title, presence: true
   validates :nbpart, presence: true
   validates :category_id, presence: true
+  default_scope {order("date ASC")}
 
   def terminate
-  	# TODO done or terminated instead of statut
-  	statut = false
+  	done = true
   	save
   	transactions.each do |transaction|
   		transaction.execute

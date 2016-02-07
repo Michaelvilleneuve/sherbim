@@ -13,6 +13,69 @@
 // Logo
 .header-logo {
 	display: inline-block;
+
+	svg {
+		float: left;
+		width: 2em;
+		height: 2em;
+		padding: .3em;
+
+		path,
+		circle {
+			transition: all .3s ease-in-out; 
+		}
+	}
+
+	.g-lines {
+		fill: darken($orange, 15%);
+	}
+
+	.g-leaves {
+		fill: $orange;
+		stroke: $orange;
+		stroke-miterlimit: 10;
+	}
+
+	.g-map {
+		transition: all 1s;
+		fill: #fff;
+	}
+
+	circle {
+		fill: $orange;
+	}
+
+	span {
+		display: inline-block;
+		padding-left: .2em;
+		font-size: .8em;
+		color: $orange;
+		transition: color .3s ease-in-out;
+	}
+
+	&:hover {
+		background: none;
+
+		.g-leaves {
+			fill: rgba($orange, .3);
+		}
+
+		.g-lines {
+			fill: $orange;
+		}
+
+		.g-map {
+			fill: darken($orange, 15%);
+		}
+
+		circle {
+			fill: #fff;
+		}
+
+		span {
+			color: darken($orange, 12.5%);
+		}
+	}
 }
 
 // Burger icon
@@ -114,21 +177,68 @@
 
 // Points
 .user-points {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 2em;
+	position: absolute;
+	top: 0;
+	right: 2em;
+	display: inline-block;	
 	height: 2em;
 	line-height: 2em;
 	font-size: 1em;
 	color: #fff;
 	background-color: rgba($fushia, .5);
+	transition: all .2s ease-in-out;
 
 	.is-hidden & {
 		opacity: 1;
 	}
 
+	&:hover {
+		text-decoration: none;
+		background-color: rgba($fushia, .3);
+		
+		span {
+		}
+
+		.icon {
+			color: darken($fushia, 25%);
+		}
+	}
+
+	.icon {
+		float: left;
+		display: inline-block;
+		width: 2em;
+		height: 2em;
+		line-height: 2em;
+		background-color: darken($fushia, 10%);
+	}
+
 	span {
+		padding: 0 1em;
 		font-size: .7em;
+	}
+}
+
+// Notice
+.notice {
+	z-index: 10;
+	position: fixed;
+	top: 2em;
+	right: 2em;
+	display: inline-block;
+	height: 2em;
+	line-height: 2em;
+	color: #fff;	
+	background-color: darken($orange, 12.5%);
+	opacity: 0;
+	transition: opacity .2s ease-in-out;
+
+	&.is-shown {
+		opacity: 1;
+	}
+
+	span {
+		padding: 0 1em;
+		font-size: .8em;
 	}
 }

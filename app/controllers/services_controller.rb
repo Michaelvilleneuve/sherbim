@@ -8,7 +8,7 @@
 #  description :text
 #  place       :string
 #  transport   :string
-#  statut      :boolean
+#  done        :boolean
 #  price       :float
 #  date        :datetime
 #  code        :string
@@ -27,13 +27,14 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    @services = Service.where(statut: false).all
+    @services = Service.where(done: false).all
   end
 
   def participate
     @service.users << @current_user
     Transaction.create worker: @current_user, service: @service
-    redirect_to root_path
+    GlobalMailer.notifydemand(@service).deliver
+    redirect_to @service, notice: 'Vous participez désormais à cet évènement ! '
   end
 
   def terminate
@@ -64,12 +65,13 @@ class ServicesController < ApplicationController
     else
       @service[:user_id] = @current_user.id
       @service[:code] = Time.now.to_formatted_s+@current_user.id.to_s
-      @service[:statut] = false
+      @service[:done] = false
     end
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
+        #GlobalMailer.confirmservice(@current_user).deliver
+        format.html { redirect_to @service, notice: 'Votre demande a bien été crée.' }
         format.json { render :show, status: :created, location: @service }
       else
         format.html { render :new }
@@ -83,7 +85,7 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
+        format.html { redirect_to @service, notice: 'Votre demande a bien été modifiée.' }
         format.json { render :show, status: :ok, location: @service }
       else
         format.html { render :edit }
@@ -97,7 +99,7 @@ class ServicesController < ApplicationController
   def destroy
     @service.destroy
     respond_to do |format|
-      format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
+      format.html { redirect_to @service, notice: 'Votre service a bien été supprimé !' }
       format.json { head :no_content }
     end
   end
