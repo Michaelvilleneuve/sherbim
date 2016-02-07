@@ -64,7 +64,7 @@ class ServicesController < ApplicationController
       redirect_to @service, notice: 'Vous devez être connecté'
     else
       @service[:user_id] = @current_user.id
-      @service[:code] = Time.now.to_formatted_s+@current_user.id.to_s
+      @service[:code] = "#{Time.now.to_i}#{@current_user.id}"
       @service[:done] = false
     end
 
